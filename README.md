@@ -11,3 +11,11 @@ nvim init.lua -u init.lua
 ```
 
 Ensure you've downloaded the file locally & its accessible to Neovim.
+
+On a further note, the configuration is available in a Docker container format
+as well. So, to run Neovim within a Docker container simply run the following
+command:
+
+```bash
+docker run -it --rm -v $(pwd):/root/.config/nvim neovim
+```
