@@ -1,5 +1,7 @@
 # Use the following project as an example:
 # https://github.com/nicodebo/neovim-docker
+# https://github.com/jpbruinsslot/neovim
+# https://github.com/bancast/neovim
 
 FROM ubuntu:22.10
 
