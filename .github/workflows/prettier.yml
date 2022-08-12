@@ -7,8 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read
-      packages: write
+      contents: write
 
     steps:
       - name: Checkout the Contents of the Repository
