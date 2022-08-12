@@ -19,14 +19,18 @@ are a few prerequisite tools you'll need in your local system. So ensure you
 at least have the following tools installed before proceeding ahead:
 
 - [Docker](https://www.docker.com)
-- A modern Terminal Emulator (I suggest going with [Kitty]
-  (https://sw.kovidgoyal.net/kitty))
+- A modern Terminal Emulator (I suggest going with [Kitty](https://sw.kovidgoyal.net/kitty))
 
 With the prerequisite tools downloaded & setup, run the following command on
 your preferred terminal:
 
 ```bash
-docker run -it --rm -v $(pwd):/root/.config/nvim ghcr.io/Jarmos-san/neovim
+docker pull ghcr.io/jarmos-san/neovim-docker:main
+docker run -it --rm ghcr.io/jarmos-san/neovim-docker
+
+# For local development, copy the Neovim configurations from the source code
+# repository & then run the following commands to build an ephemeral container.
+# docker run -it --rm -v $(pwd):/root/.config/nvim ghcr.io/jarmos-san/neovim-docker
 ```
 
 The command will open up an interactive Neovim instance & the built container
@@ -35,8 +39,7 @@ will also be immediately removed when you exit the Neovim environment!
 ## 📚 Informative Resources for Learning About the Tools
 
 Neovim has a significant learning curve but its worthwhile especially for
-power-users (_and if you suffer from [Carpal Tunnel Syndrome (CTS)]
-(https://www.ninds.nih.gov/carpal-tunnel-syndrome-fact-sheet)_). So for all the
+power-users (_and if you suffer from [Carpal Tunnel Syndrome (CTS)](https://www.ninds.nih.gov/carpal-tunnel-syndrome-fact-sheet)_). So for all the
 beginners out there, following are some resources which you might find useful
 while learning the tools in use:
 
