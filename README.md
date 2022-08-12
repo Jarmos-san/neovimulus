@@ -1,5 +1,7 @@
 # 🍱 A Containerised Neovim Environment
 
+[![Docker Image](https://github.com/Jarmos-san/neovim-docker/actions/workflows/publish.yml/badge.svg)](https://github.com/Jarmos-san/neovim-docker/actions/workflows/publish.yml) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Jarmos-san/neovim-docker?color=%23181717&label=Size&logo=github) ![GitHub](https://img.shields.io/github/license/Jarmos-san/neovim-docker?label=License&logo=github) ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2FJarmos-san%2Fneovim-docker)
+
 This repository contains the source code for working on a containerised Neovim
 environment. I use this project to experiment with various Neovim configurations
 which otherwise would be difficult on my work environment. Containerising a
