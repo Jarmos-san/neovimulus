@@ -9,7 +9,7 @@
 FROM ubuntu:22.10
 
 # Install Neovim & its dependencies.
-RUN apt-get update && apt-get install -y neovim
+RUN apt-get update && apt-get install -y neovim git curl
 
 # Cleanup some redundant files & folders to keep the container lean & slim.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
