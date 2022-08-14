@@ -102,4 +102,7 @@ tags
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/lua,vim,text,visualstudiocode
-plugin
+
+!**/after/plugin/**/*.lua
+**/plugin/packer_compiled.lua
+
