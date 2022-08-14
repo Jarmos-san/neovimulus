@@ -87,20 +87,6 @@ map.set("n", "<C-w><down>", "<C-w>-")
 
 --[
 -- =================================================================================
--- Install all the necessary plugins over here.
--- =================================================================================
---]
-
--- Load "packer.nvim" to install the rest of Neovim plugins.
-vim.cmd([[ packadd packer.nvim ]])
-
-require("packer").startup(function(use)
-	-- Ensure 'packer.nvim' manages itself.
-	use("wbthomason/packer.nvim")
-end)
-
---[
--- =================================================================================
 -- Setup some necessary autocommands to load when Neovim starts.
 -- =================================================================================
 --]
@@ -134,3 +120,5 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		vim.cmd([[ highlight Normal ctermbg=None ]])
 	end,
 })
+
+require("plugins")
