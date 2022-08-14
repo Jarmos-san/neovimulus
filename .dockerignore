@@ -1,2 +1,10 @@
+LICENSE
 README.md
-.github/
+
+**/plugin/**/packer_compiled.lua
+
+.github
+.dockerignore
+.editorconfig
+.gitattributes
+.gitignore
