@@ -1,5 +1,17 @@
 local map = vim.keymap
 
+--[
+-- =================================================================================
+-- Some bare minimum Neovim configurations to improve the user's quality of life.
+-- =================================================================================
+--]
+
+-- Disable the following runtine dependencies from loading since they're not necessary.
+vim.g.loaded_ruby_provider = false
+vim.g.loaded_perl_provider = false
+vim.g.loaded_node_provider = false
+vim.g.loaded_python3_provider = false
+
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
@@ -34,13 +46,19 @@ vim.g.mapleader = " " -- Remap the leader to "Space".
 -- Assign what each type of whitespace should look like.
 -- FIXME: It still doesn't work as I expect it to.
 vim.g.listchars = {
-      eol = "↴",
-      tab = "→ ",
-      space = "·",
-      extends = "…",
-      precedes = "…",
-      trail = ".",
-    }
+	eol = "↴",
+	tab = "→ ",
+	space = "·",
+	extends = "…",
+	precedes = "…",
+	trail = ".",
+}
+
+--[
+-- =================================================================================
+-- Setup some bare minimum keymaps for easier navigation inside the Neovim environment.
+-- =================================================================================
+--]
 
 -- Basic keymaps for better navigation within Neovim.
 map.set("i", "jk", "<Esc>") -- Press "jk" in quick succession to exit Insert mode.
@@ -67,25 +85,52 @@ map.set("n", "<C-w><right>", "<C-w>>")
 map.set("n", "<C-w><up>", "<C-w>+")
 map.set("n", "<C-w><down>", "<C-w>-")
 
+--[
+-- =================================================================================
+-- Install all the necessary plugins over here.
+-- =================================================================================
+--]
+
+-- Load "packer.nvim" to install the rest of Neovim plugins.
+vim.cmd([[ packadd packer.nvim ]])
+
+require("packer").startup(function(use)
+	-- Ensure 'packer.nvim' manages itself.
+	use("wbthomason/packer.nvim")
+end)
+
+--[
+-- =================================================================================
+-- Setup some necessary autocommands to load when Neovim starts.
+-- =================================================================================
+--]
+
 -- Yank on highlight.
 vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "Highlight the yanked text for a specified time.",
-  group = vim.api.nvim_create_augroup("yank_highlight", { clear = true }),
-  callback = function() vim.highlight.on_yank() end
+	desc = "Highlight the yanked text for a specified time.",
+	group = vim.api.nvim_create_augroup("yank_highlight", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
 
 -- Source the "init.lua" file on save.
 vim.api.nvim_create_autocmd("BufWritePost", {
-  desc = "Source the 'init.lua' file on save.",
-  group = vim.api.nvim_create_augroup("source_init_file", { clear = true }),
-  pattern = "**/init.lua",
-  command = "source <afile>"
+	desc = "Source the 'init.lua' file on save.",
+	group = vim.api.nvim_create_augroup("source_init_file", { clear = true }),
+	pattern = "**/init.lua",
+	command = "source <afile>",
 })
 
 -- Disable colour schemes to change the background colour.
 vim.api.nvim_create_autocmd("ColorScheme", {
-  desc = "Disable colorschemes to set/change the background colours.",
-  group = vim.api.nvim_create_augroup("disable_colourscheme_background", { clear = true }),
-  pattern = "*",
-  callback = function() vim.cmd([[ highlight Normal ctermbg=None ]]) end
+	desc = "Disable colorschemes to set/change the background colours.",
+	group = vim.api.nvim_create_augroup(
+		"disable_colourscheme_background",
+		{ clear = true }
+	),
+	pattern = "*",
+	callback = function()
+		vim.cmd([[ highlight Normal ctermbg=None ]])
+	end,
 })
