@@ -18,5 +18,9 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # files properly.
 ENV LANG C.UTF-8
 
+# Install "packer.nvim" to install the Neovim plugins.
+RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim \
+    /root/.local/share/nvim/site/pack/packer/start/packer.nvim
+
 # The command to invoke when Docker runs the container in interactive mode.
 ENTRYPOINT [ "nvim" ]
