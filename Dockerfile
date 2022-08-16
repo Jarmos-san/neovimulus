@@ -22,8 +22,5 @@ ENV LANG C.UTF-8
 RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim \
     /root/.local/share/nvim/site/pack/packer/start/packer.nvim
 
-# Temporary entrypoint which only exists for debug purposes.
-# ENTRYPOINT [ "bash" ]
-
 # The command to invoke when Docker runs the container in interactive mode.
-ENTRYPOINT [ "nvim" ]
+ENTRYPOINT [ "/usr/bin/bash" ]
