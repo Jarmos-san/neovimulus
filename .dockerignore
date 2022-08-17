@@ -1,7 +1,7 @@
 LICENSE
 README.md
 
-**/plugin/**/packer_compiled.lua
+plugin/packer_compiled.lua
 
 .github
 .dockerignore
