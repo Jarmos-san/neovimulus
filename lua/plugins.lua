@@ -13,7 +13,15 @@ packer.startup({
 		use("wbthomason/packer.nvim")
 
 		-- Install a good-looking colorscheme to make it easier to work with.
-		-- use("navarasu/onedark.nvim")
+		use({
+			"navarasu/onedark.nvim",
+			config = function()
+				require("onedark").setup({
+					style = "darker",
+				})
+				require("onedark").load()
+			end,
+		})
 	end,
 	config = {
 		display = {
