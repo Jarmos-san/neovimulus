@@ -3,5 +3,4 @@
 [ -d "./plugin" ] && echo "The redundant \"/plugin\" directory exists! Deleting it..."
 rm --recursive --force "./plugin"
 
-[ -x "$(command -v nvim)" ] && echo "Setting up Neovim..."
-nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
+docker run --interactive --tty --rm --volume "$(pwd):/root/.config/nvim" neovim
