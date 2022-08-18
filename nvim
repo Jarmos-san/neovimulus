@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+[ -d "./plugin" ] && echo "The redundant \"/plugin\" directory exists! Deleting it..."
+rm --recursive --force "./plugin"
+
+[ -x "$(command -v nvim)" ] && echo "Setting up Neovim..."
+nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
