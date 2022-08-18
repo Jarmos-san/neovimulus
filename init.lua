@@ -33,8 +33,16 @@ vim.opt.pumblend = 5 -- Controls the transparency of the popup-menu which appear
 vim.opt.backup = false -- Disable creating backups before modifying a file.
 vim.opt.showcmd = true -- Enable showcasing the current invoked command.
 vim.opt.cmdheight = 1 -- Not sure what it does or how it helps. (lol?)
+
+-- There's too much I don't understand about configuring Tab/Space indents in Neovim.
+-- See the following SO thread for a detailed explanation:
+-- https://stackoverflow.com/a/1878983/8604951
+vim.opt.tabstop = 4 -- Insert 4 Spaces when a single Tab is pressed.
+vim.opt.softtabstop = 0 -- Magic!!
+vim.opt.shiftwidth = 4 -- More magic!!
 vim.opt.expandtab = true -- Insert appropriate number of Spaces when a <Tab> is pressed.
 vim.opt.smarttab = true -- Insert Spaces when a <Tab> is pressed.
+
 vim.opt.breakindent = true -- Wrap every line with proper indents.
 vim.opt.backspace = { "start", "eol", "indent" } -- Perform appropriate actions when <Backspace> is pressed.
 vim.opt.path:append({ "**" }) -- Search down subfolders when looking for files.
