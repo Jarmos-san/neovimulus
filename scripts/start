@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-[ -d "./plugin" ] && echo "The redundant \"/plugin\" directory exists! Deleting it..."
-rm --recursive --force "./plugin"
-
-docker run --interactive --tty --rm --volume "$(pwd):/root/.config/nvim" neovim
+docker run --interactive --tty --rm \
+  --volume "$(pwd):/root/.config/nvim" \
+  # TODO: Add a Docker volume for the "plugins" folder
+  # --volume "$(pwd):/root/.config/nvim"
+  neovim
