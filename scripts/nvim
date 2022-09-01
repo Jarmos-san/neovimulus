@@ -3,8 +3,10 @@
 [ -d "./plugin" ] && echo "Deleting the redundant \"plugin\" directory."
 rm --recursive --force "./plugin"
 
-echo "Installing Neovim plugins..."
+echo -n "Installing Neovim plugins..."
 nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
+echo "Success!"
 
-echo "Installing Neovim LSP servers..."
-nvim --headless -c "MasonToolInstall"
+# FIXME: Does unexpecte behaviour when invoked.
+# echo "Installing Neovim LSP servers..."
+# nvim --headless -c "MasonToolInstall"
