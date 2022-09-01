@@ -90,7 +90,8 @@ packer.startup({
 						"lua-language-server",
 						"stylua",
 						"selene",
-						"editorconfig-checker",
+						-- FIX: https://github.com/williamboman/mason.nvim/issues/364
+						-- "editorconfig-checker",
 					},
 				})
 			end,
