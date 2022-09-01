@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 docker run --interactive --tty --rm \
-  --volume "$(pwd):/root/.config/nvim" \
-  # TODO: Add a Docker volume for the "plugins" folder
-  # --volume "$(pwd):/root/.config/nvim"
+  --volume "$(pwd)/init.lua:/root/.config/nvim/init.lua" \
+  --volume "$(pwd)/lua:/root/.config/nvim/lua" \
   neovim
