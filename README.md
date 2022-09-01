@@ -41,6 +41,40 @@ docker run -it --rm ghcr.io/jarmos-san/neovim-docker
 The command will open up an interactive Neovim instance & the built container
 will also be immediately removed when you exit the Neovim environment!
 
+## Installing Plugins & Post-Setup Tasks
+
+With the Neovim Docker container download & spun up, its time to install the
+necessary plugins & perform some post-setup tasks like downloading LSP servers.
+This section details some of those tasks which needs to be performed after
+setting up Neovim.
+
+**Installing Plugins with `packer.nvim`**:
+
+The container come packaged with `git` for Neovim to download & setup the
+[`packer.nvim`][1] package manager for Neovim. To help it install all the
+necessary plugins, run `:PackerSync` in _Command_ mode.
+
+Additionally, you could also perform a headless plugin installation by
+invoking the following command:
+
+```shell
+nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
+```
+
+**Installing LSP Servers with `mason.nvim`**:
+
+Neovim comes with a builtin LSP client but the individual servers has to be
+downloaded seperately. Unfortunately, the said servers are often distributed
+through multiple package managers like `npm`, `brew` & so on.
+
+Keeping a track of all the package manager & which manager is responsible to
+download which LSP server can be difficult to track. Hence, to help with such
+scenarios, the [`mason.nvim`][2] plugin helps a lot to automate LSP server
+installation.
+
+That said, invoking `:MasonToolInstall` in _Command_ mode will install all the
+necessary LSP servers that you've configured `mason.nvim` to handle.
+
 ## 📚 Informative Resources for Learning About the Tools
 
 Neovim has a significant learning curve but its worthwhile especially for
@@ -65,3 +99,8 @@ adhere to the T&Cs of the MIT license.
 
 For more information on the licensing T&Cs, feel free to refer to the
 [LICENSE](./LICENSE) document.
+
+<!-- Reference Links -->
+
+[1]: https://github.com/wbthomason/packer.nvim
+[2]: https://github.com/williamboman/mason.nvim
