@@ -54,8 +54,8 @@ The container come packaged with `git` for Neovim to download & setup the
 [`packer.nvim`][1] package manager for Neovim. To help it install all the
 necessary plugins, run `:PackerSync` in _Command_ mode.
 
-Additionally, you could also perform a headless plugin installation by
-invoking the following command:
+Additionally, you could also perform a headless plugin installation by invoking
+the following command:
 
 ```shell
 nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
