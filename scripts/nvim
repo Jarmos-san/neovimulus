@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+[ -d "./plugin" ] && echo "Deleting the redundant \"plugin\" directory."
+rm --recursive --force "./plugin"
+
+echo "Installing Neovim plugins..."
+nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
+
+echo "Installing Neovim LSP servers..."
+nvim --headless -c "MasonToolInstall"
