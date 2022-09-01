@@ -36,26 +36,29 @@ packer.startup({
 				end
 				require("lspconfig").sumneko_lua.setup({
 					on_attach = on_attach,
-                    settings = {
-                        Lua = {
-                            runtime = {
-                                -- The version of Lua used by Neovim.
-                                version = "LuaJIT",
-                            },
-                            diagnostics = {
-                                -- Let the Lua LSP server be aware of the "vim" namespace.
-                                globals = { "vim" }
-                            },
-                            workspace = {
-                                -- Make the Lua LSP server be aware of the Neovim runtime files.
-                                library = vim.api.nvim_get_runtime_file("", true)
-                            },
-                            telemetry = {
-                                -- Disable data tracking for privacy concerns.
-                                enable = false,
-                            },
-                        },
-                    },
+					settings = {
+						Lua = {
+							runtime = {
+								-- The version of Lua used by Neovim.
+								version = "LuaJIT",
+							},
+							diagnostics = {
+								-- Let the Lua LSP server be aware of the "vim" namespace.
+								globals = { "vim" },
+							},
+							workspace = {
+								-- Make the Lua LSP server be aware of the Neovim runtime files.
+								library = vim.api.nvim_get_runtime_file(
+									"",
+									true
+								),
+							},
+							telemetry = {
+								-- Disable data tracking for privacy concerns.
+								enable = false,
+							},
+						},
+					},
 				})
 			end,
 		})
@@ -64,15 +67,31 @@ packer.startup({
 		use({
 			"williamboman/mason.nvim",
 			config = function()
-				require("mason").setup()
+				require("mason").setup({
+					log_level = vim.log.levels.DEBUG,
+				})
 			end,
 		})
 
+		-- use({
+		-- 	"williamboman/mason-lspconfig.nvim",
+		-- 	config = function()
+		-- 		require("mason-lspconfig").setup({
+		-- 			ensure_installed = { "sumneko_lua" },
+		-- 		})
+		-- 	end,
+		-- })
+		--
 		use({
-			"williamboman/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			config = function()
-				require("mason-lspconfig").setup({
-					ensure_installed = { "sumneko_lua" },
+				require("mason-tool-installer").setup({
+					ensure_installed = {
+						"lua-language-server",
+						"stylua",
+						"selene",
+						"editorconfig-checker",
+					},
 				})
 			end,
 		})
