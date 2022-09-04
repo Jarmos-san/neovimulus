@@ -106,4 +106,5 @@ For more information on the licensing T&Cs, feel free to refer to the
 
 [1]: https://github.com/wbthomason/packer.nvim
 [2]: https://github.com/williamboman/mason.nvim
-[6]: https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp
+[6]:
+  https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp
