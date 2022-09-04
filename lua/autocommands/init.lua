@@ -13,13 +13,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- FIXME: Uncomment this later on since it causes issues while in development.
 -- Source the "init.lua" file on save.
-vim.api.nvim_create_autocmd("BufWritePost", {
-	desc = "Source the 'init.lua' file on save.",
-	group = vim.api.nvim_create_augroup("source_init_file", { clear = true }),
-	pattern = "**/init.lua",
-	command = "source <afile>",
-})
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+-- desc = "Source the 'init.lua' file on save.",
+-- group = vim.api.nvim_create_augroup("source_init_file", { clear = true }),
+-- pattern = "**/init.lua",
+-- command = "source <afile>",
+-- })
 
 -- Disable colour schemes to change the background colour.
 vim.api.nvim_create_autocmd("ColorScheme", {

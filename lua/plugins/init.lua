@@ -73,15 +73,6 @@ packer.startup({
 			end,
 		})
 
-		-- use({
-		-- 	"williamboman/mason-lspconfig.nvim",
-		-- 	config = function()
-		-- 		require("mason-lspconfig").setup({
-		-- 			ensure_installed = { "sumneko_lua" },
-		-- 		})
-		-- 	end,
-		-- })
-		--
 		use({
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			config = function()
