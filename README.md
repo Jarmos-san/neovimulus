@@ -8,7 +8,7 @@
 This repository contains the source code for working on a containerised Neovim
 environment. I use this project to experiment with various Neovim configurations
 which otherwise would be difficult on my work environment. Containerising a
-Neovim environment takes away the pain of backing older configuration &
+Neovim environment takes away the pain of backing up older configuration &
 replacing them once I'm done experimenting with newer Neovim configurations.
 
 So, if you work with or have a keen interest in using Neovim, this containerised
@@ -30,25 +30,34 @@ With the prerequisite tools downloaded & setup, run the following command on
 your preferred terminal:
 
 ```bash
+# Pull the Docker image from GitHub Registry.
 docker pull ghcr.io/jarmos-san/neovim-docker:main
-docker run -it --rm ghcr.io/jarmos-san/neovim-docker
 
-# For local development, copy the Neovim configurations from the source code
-# repository & then run the following commands to build an ephemeral container.
-# docker run -it --rm -v $(pwd):/root/.config/nvim ghcr.io/jarmos-san/neovim-docker
+# Create the Neovim configuration path (if it already doesn't exist).
+mkdir -p ~/.config/nvim-test; cd ~/.config/nvim-test
+
+# Clone the contents of this repository to the Neovim config folder.
+git clone git@github.com:Jarmos-san/neovim-docker
+
+# Run the container in interactive mode with the necessary files & folders
+# mounted in to the container properly.
+docker run -it --rm \
+    -v "$(pwd)/init.lua:/root/.config/nvim/init.lua" \
+    -v "$(pwd)lua:/root/.config/nvim/lua" \
+    ghcr.io/jarmos-san/neovim-docker:main
 ```
 
 The command will open up an interactive Neovim instance & the built container
 will also be immediately removed when you exit the Neovim environment!
 
-## Installing Plugins & Post-Setup Tasks
+## ⚙️ Installing Plugins & Post-Setup Tasks
 
 With the Neovim Docker container download & spun up, its time to install the
 necessary plugins & perform some post-setup tasks like downloading LSP servers.
 This section details some of those tasks which needs to be performed after
 setting up Neovim.
 
-**Installing Plugins with `packer.nvim`**:
+### Installing Plugins with `packer.nvim`
 
 The container come packaged with `git` for Neovim to download & setup the
 [`packer.nvim`][1] package manager for Neovim. To help it install all the
@@ -57,11 +66,11 @@ necessary plugins, run `:PackerSync` in _Command_ mode.
 Additionally, you could also perform a headless plugin installation by invoking
 the following command:
 
-```shell
+```bash
 nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
 ```
 
-**Installing LSP Servers with `mason.nvim`**:
+### Installing LSP Servers with `mason.nvim`
 
 Neovim comes with a builtin LSP client but the individual servers has to be
 downloaded seperately. Unfortunately, the said servers are often distributed
@@ -106,5 +115,4 @@ For more information on the licensing T&Cs, feel free to refer to the
 
 [1]: https://github.com/wbthomason/packer.nvim
 [2]: https://github.com/williamboman/mason.nvim
-[6]:
-  https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp
+[6]: https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp
