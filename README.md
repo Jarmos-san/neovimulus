@@ -89,6 +89,8 @@ find useful while learning the tools in use:
   Vim in a fun, interactive format.
 - [Docker Playground](https://www.docker.com/play-with-docker) to learn Docker
   right from within your favourite browser.
+- [Setup `nvim-lspconfig` with `nvim-cmp`][6] to learn about setting up LSP &
+  autocompletion.
 
 ## 📄 Usage Terms & Conditions
 
@@ -104,3 +106,4 @@ For more information on the licensing T&Cs, feel free to refer to the
 
 [1]: https://github.com/wbthomason/packer.nvim
 [2]: https://github.com/williamboman/mason.nvim
+[6]: https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp
