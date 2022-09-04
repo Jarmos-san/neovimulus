@@ -6,7 +6,7 @@
 -- =================================================================================
 --]
 
-require("settings")
-require("keymaps")
-require("autocommands")
-require("plugins")
+require("jarmos.settings")
+require("jarmos.keymaps")
+require("jarmos.autocommands")
+require("jarmos.plugins")
