@@ -9,17 +9,16 @@ vim.cmd([[ packadd packer.nvim ]])
 
 packer.startup({
 	function(use)
-		-- Allow "packer.nvim" to keep itself updated!
-		use("wbthomason/packer.nvim")
-
-		-- Install a good-looking colorscheme to make it easier to work with.
 		use({
+			-- Allow "packer.nvim" to keep itself updated!
+			"wbthomason/packer.nvim",
+		})
+
+		use({
+			-- Install a good-looking colorscheme to make it easier to work with.
 			"navarasu/onedark.nvim",
 			config = function()
-				require("onedark").setup({
-					style = "darker",
-				})
-				require("onedark").load()
+				require("user.plugins.onedark").config()
 			end,
 		})
 
@@ -63,28 +62,20 @@ packer.startup({
 			end,
 		})
 
-		-- Plugin for installing the various LSP servers.
 		use({
+			-- Plugin for installing the various LSP servers.
 			"williamboman/mason.nvim",
 			config = function()
-				require("mason").setup({
-					log_level = vim.log.levels.DEBUG,
-				})
+				require("user.plugins.mason").config()
 			end,
 		})
 
 		use({
+			-- Plugin for auto-installing necessary tools like LSP servers,
+			-- formatters, linters & so on.
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			config = function()
-				require("mason-tool-installer").setup({
-					ensure_installed = {
-						"lua-language-server",
-						"stylua",
-						"selene",
-						-- FIX: https://github.com/williamboman/mason.nvim/issues/364
-						-- "editorconfig-checker",
-					},
-				})
+				require("user.plugins.mason").install_servers()
 			end,
 		})
 	end,
