@@ -1,8 +1,3 @@
-# Use the following project as an example:
-# https://github.com/nicodebo/neovim-docker
-# https://github.com/jpbruinsslot/neovim
-# https://github.com/bancast/neovim
-
 # Base image to build the container on. And Ubuntu is a good image to start with
 # since it contains most of the necessary runtime dependencies. Also Ubuntu is
 # quite popular among the masses.
