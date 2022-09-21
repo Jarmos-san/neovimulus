@@ -4,8 +4,10 @@ Module for configuring the builti-in LSP client.
 
 local M = {}
 
-function M.config()
-    local on_attach = function() end
+function M.setup_lsp()
+	local on_attach = function()
+		-- TODO: Add the LSP-based keymaps over here.
+	end
 
     local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
