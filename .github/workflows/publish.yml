@@ -1,4 +1,4 @@
-name: Create & Publish the Image
+name: Create & Publish the Latest Version of the Image
 
 on:
   push:

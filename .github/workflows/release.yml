@@ -1,4 +1,4 @@
-name: Create & Publish the Image
+name: Create & Publish a Image With a Tag
 
 on:
   release:
