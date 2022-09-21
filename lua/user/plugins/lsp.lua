@@ -9,7 +9,9 @@ function M.setup_lsp()
 		-- TODO: Add the LSP-based keymaps over here.
 	end
 
-    local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+	local capabilities = require("cmp_nvim_lsp").update_capabilities(
+		vim.lsp.protocol.make_client_capabilities()
+	)
 
     require("lspconfig").sumneko_lua.setup({
         on_attach = on_attach,
