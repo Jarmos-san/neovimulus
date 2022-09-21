@@ -59,3 +59,5 @@ vim.g.listchars = {
 	precedes = "…",
 	trail = ".",
 }
+
+vim.g.completeopt = { "menu", "menuone", "noselect" }
