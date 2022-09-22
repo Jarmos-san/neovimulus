@@ -71,6 +71,34 @@ function M.setup_completions()
 	}
 
 	cmp.setup({
+		-- INFO: Disable the autocompletion popup menu when typing comments.
+		enabled = function()
+			local context = require("cmp.config.context")
+			if vim.api.nvim_get_mode().mode == "c" then
+				return true
+			else
+				return not context.in_treesitter_capture("comment")
+					and not context.in_syntax_group("Comment")
+			end
+		end,
+		-- INFO: Make the completion menu more informative & good-looking.
+		formatting = {
+			format = function(entry, vim_item)
+				vim_item.kind = string.format(
+					"%s %s",
+					lspkind_icons[vim_item.kind],
+					vim_item.kind
+				)
+				vim_item.menu = ({
+					buffer = "[Buffer]",
+					nvim_lsp = "[LSP]",
+					luasnip = "[Snippet]",
+					nvim_lua = "[Neovim]",
+				})[entry.source.name]
+				return vim_item
+			end,
+		},
+		-- INFO: Enable snippet support within the automcompletion popup menu.
 		snippet = {
 			expand = function(args)
 				require("luasnip").lsp_expand(args.body)
