@@ -104,10 +104,12 @@ function M.setup_completions()
 				require("luasnip").lsp_expand(args.body)
 			end,
 		},
+		-- INFO: Enable a nice looking border around the completion menu to make it look nicer.
 		window = {
 			completion = cmp.config.window.bordered(),
 			documentation = cmp.config.window.bordered(),
 		},
+		-- INFO: Enable some keybindings to be invoked when automcompletion is required.
 		mapping = cmp.mapping.preset.insert({
 			["<C-b>"] = cmp.mapping.scroll_docs(-4),
 			["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -115,6 +117,7 @@ function M.setup_completions()
 			["<C-e>"] = cmp.mapping.abort(),
 			["<CR>"] = cmp.mapping.confirm({ select = true }),
 		}),
+		-- INFO: Sources required by the "nvim-cmp" plugin to provide core autocompletion features.
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },
 			{ name = "luasnip" },
