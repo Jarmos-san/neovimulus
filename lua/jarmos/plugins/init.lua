@@ -34,12 +34,15 @@ packer.startup({
 				{ "hrsh7th/cmp-path" },
 				{ "hrsh7th/cmp-cmdline" },
 				{ "saadparwaiz1/cmp_luasnip" },
+				{ "hrsh7th/cmp-nvim-lsp-signature-help" },
 			},
+			after = "nvim-lspconfig",
 		})
 
 		-- Neccessary plugin for snippet support.
 		use({
 			"L3MON4D3/LuaSnip",
+			after = "nvim-cmp",
 		})
 
 		-- Install plugin for configuring the LSP client.
