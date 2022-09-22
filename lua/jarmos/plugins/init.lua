@@ -18,7 +18,7 @@ packer.startup({
 			-- Install a good-looking colorscheme to make it easier to work with.
 			"navarasu/onedark.nvim",
 			config = function()
-				require("user.plugins.onedark").config()
+				require("jarmos.plugins.onedark").config()
 			end,
 		})
 
@@ -26,7 +26,7 @@ packer.startup({
 		use({
 			"hrsh7th/nvim-cmp",
 			config = function()
-				require("user.plugins.lsp").setup_completions()
+				require("jarmos.plugins.lsp").setup_completions()
 			end,
 			requires = {
 				{ "hrsh7th/cmp-nvim-lsp" },
@@ -46,7 +46,7 @@ packer.startup({
 		use({
 			"neovim/nvim-lspconfig",
 			config = function()
-				require("user.plugins.lsp").setup_lsp()
+				require("jarmos.plugins.lsp").setup_lsp()
 			end,
 		})
 
@@ -54,7 +54,7 @@ packer.startup({
 			-- Plugin for installing the various LSP servers.
 			"williamboman/mason.nvim",
 			config = function()
-				require("user.plugins.mason").config()
+				require("jarmos.plugins.mason").config()
 			end,
 		})
 
@@ -63,7 +63,7 @@ packer.startup({
 			-- formatters, linters & so on.
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			config = function()
-				require("user.plugins.mason").install_servers()
+				require("jarmos.plugins.mason").install_servers()
 			end,
 		})
 	end,
