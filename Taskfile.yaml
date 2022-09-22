@@ -1,12 +1,32 @@
-# https://taskfile.dev
-
-version: '3'
-
-vars:
-  GREETING: Hello, World!
+version: "3"
 
 tasks:
-  default:
+  start:
+    desc: Start Neovim inside a Docker container
+    summary: |
+      Start Neovim inside a Docker container.
+
+      This command will create a Docker container with Neovim running inside it.
+      The container has all the necessary Neovim runtime dependencies like Python,
+      Node & so on which is required by some plugins.
     cmds:
-      - echo "{{.GREETING}}"
-    silent: true
+      - docker run --interactive --tty --rm \
+        --volume "$(pwd)/init.lua:/root/.config/nvim/init.lua" \
+        --volume "$(pwd)/lua:/root/.config/nvim/lua" \
+        ghcr.io/jarmos-san/neovim-docker:main
+
+  release:
+    desc: Create a public versioned release of the project on GitHub.
+    summary: |
+      Create a public release on GitHub.
+
+      This command will generate a public release on GitHub with all the necessary
+      details like changelog & among other necessary information.
+
+  build:
+    desc: Build the Neovim container's Docker image locally for testing purposes.
+    summary: |
+      Build the Neovim Docker image locally for testing purposes.
+
+      This command will create a local Docker image of the Neovim container. This
+      should be ideally done for testing & debugging purposes only.
