@@ -122,6 +122,8 @@ function M.setup_completions()
 			{ name = "nvim_lsp" },
 			{ name = "luasnip" },
 			{ name = "buffer" },
+			{ name = "nvim_lsp_signature_help" },
+			{ name = "path" },
 		}),
 	})
 end
