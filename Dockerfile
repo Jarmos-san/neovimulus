@@ -4,13 +4,15 @@
 FROM ubuntu:22.10
 
 # Install some necessary tools for the container environment to work properly
-RUN apt-get update && apt-get install -y apt-transport-https ca-certificates
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    apt-transport-https ca-certificates build-essential
 RUN update-ca-certificates
 
 # Install Neovim & its dependencies.
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    neovim git curl unzip gcc
+    neovim git curl unzip
 
 # Cleanup some redundant files & folders to keep the container lean & slim.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
