@@ -20,6 +20,8 @@ unreleased features, check out the `main` branch.
   in the root `init.lua` file.
 - Added a few icons & labels for the LSP objects displayed in the
   autocompletion menu.
+- Added a `Taskfile` entry for cleaning up after work on the project is
+  complete.
 
 More changes to the configuration will be listed & documented here as
 necessary.
