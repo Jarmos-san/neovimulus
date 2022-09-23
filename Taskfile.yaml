@@ -1,6 +1,21 @@
 version: "3"
 
 tasks:
+  clean:
+    desc: Clean up the system after all development tasks are complete.
+    summary: |
+      Cleanup system after development is complete.
+
+      This command will cleanup all the unnecessary files, folder, Docker
+      images/containers after development on the project is complete.
+
+      NOTE: This is a destructive process. Please read the set of commands it
+      invokes before taking an irreversible action.
+    cmds:
+      - docker system prune --all --force
+      - rm --recursive --force /plugins
+      - rm --recursive --force "$HOME/.local/share/nvim"
+
   start:
     desc: Start Neovim inside a Docker container
     summary: |
