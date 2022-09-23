@@ -14,7 +14,6 @@ tasks:
     cmds:
       - docker system prune --all --force
       - rm --recursive --force /plugins
-      - rm --recursive --force "$HOME/.local/share/nvim"
 
   start:
     desc: Start Neovim inside a Docker container
