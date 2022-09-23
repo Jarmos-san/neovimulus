@@ -25,7 +25,12 @@ unreleased features, check out the `main` branch.
 - Added Treesitter support with the [`nvim-treesitter/nvim-treesitter`][]
   plugin.
 
-TODO: Fix the issue with missing C compiler in the container.
+TODO:
+
+1. Fix the issue with missing C compiler in the container.
+2. Configure the `Dockerfile` to install all the necessary packages at one go
+   to reduce the build time & the image size as well.
+3. Ensure Treesitter is installed & works well.
 
 More changes to the configuration will be listed & documented here as
 necessary.
