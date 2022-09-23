@@ -22,6 +22,10 @@ unreleased features, check out the `main` branch.
   autocompletion menu.
 - Added a `Taskfile` entry for cleaning up after work on the project is
   complete.
+- Added Treesitter support with the [`nvim-treesitter/nvim-treesitter`][]
+  plugin.
+
+TODO: Fix the issue with missing C compiler in the container.
 
 More changes to the configuration will be listed & documented here as
 necessary.
