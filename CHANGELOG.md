@@ -13,24 +13,16 @@ unreleased features, check out the `main` branch.
 
 ### Added
 
-- Placeholder
-- Placeholder
-- Placeholder
-- Placeholder
+- Create a bare minimum [Taskfile][11] for better quality-of-life when working
+  from the CLI environment.
+- Create an experimental `protected_call()` wrapper function to load a Lua
+  module without breaking the flow of execution. For now you can only find it
+  in the root `init.lua` file.
+- Added a few icons & labels for the LSP objects displayed in the
+  autocompletion menu.
 
-### Changed
-
-- Placeholder
-- Placeholder
-- Placeholder
-- Placeholder
-
-### Fixed
-
-- Placeholder
-- Placeholder
-- Placeholder
-- Placeholder
+More changes to the configuration will be listed & documented here as
+necessary.
 
 ## [1.0.0] - 2022-08-22
 
@@ -63,10 +55,42 @@ an [issue thread][3].
 
 ### Added
 
-- Placeholder content
+- Created a namespace `jarmos` for better maintainability of the project. See
+  the [nvim-lua guide on Lua config files][5] for more information.
+- Created & released a Docker image to GitHub Registry for easier collaboration
+  efforts & development.
+- Created a bunch of Autocommands for:
+  - Highlighting yanked text.
+  - Create a darker background regardless of the colorscheme.
+  - Source the current Lua file when the buffer is written to it.
+- Created a bunch of keymaps for bare minimum navigation within Neovim.
+- Configured a bare minimum settings for Neovim to behave as it's expected to.
+- Setup & configure a bunch of plugins as detailed below:
+  - [`wbthomason/packer.nvim`][6] to manage the other Neovim plugins.
+  - [`navarasu/onedark.nvim`][4] for the colorscheme.
+  - [`hrsh7th/nvim-cmp`][7] & its companion plugins for the autocompletion
+    features.
+  - [`L3MON4D3/LuaSnip`][8] for snippet support beside the LSP & autocompletion
+    support.
+  - [`neovim/nvim-lspconfig`][9] for configuring the inbuilt LSP client.
+  - [`williamboman/mason`][10] & it's companion plugins for automatic installation
+    of the LSP servers.
+
+The aforementioned plugins are an absolute necessity for Neovim to work like an
+Integrated Developement Environment (IDE). And hence you can rest assured they
+will never be removed until the next major release (which will probably
+contain breaking changes).
 
 <!-- Reference Links -->
 
 [1]: http://keepachangelog.com
 [2]: http://semver.org
 [3]: https://github.com/Jarmos-san/neovim-docker/issues/new/choose
+[4]: https://github.com/navarasu/onedark.nvim
+[5]: https://github.com/nanotee/nvim-lua-guide#tips
+[6]: https://github.com/wbthomason/packer.nvim
+[7]: https://github.com/hrsh7th/nvim-cmp
+[8]: https://github.com/L3MON4D3/LuaSnip
+[9]: https://github.com/neovim/nvim-lspconfig
+[10]: https://github.com/williamboman/mason
+[11]: https://taskfile.dev
