@@ -36,7 +36,7 @@ docker pull ghcr.io/jarmos-san/neovim-docker:main
 
 # INFO: The following command downloads the latest pinned version of the
 # project.
-docker pull ghcr.io/jarmos-san/neovim-docker:v1.0.0
+docker pull ghcr.io/jarmos-san/neovim-docker:v1.2.0
 
 # Create the configuration filepath location, if it doesn't already exists.
 mkdir -p "~/.config/nvim" && cd "~/.config/nvim"
