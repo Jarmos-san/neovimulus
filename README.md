@@ -87,7 +87,11 @@ installation.
 That said, invoking `:MasonToolInstall` in _Command_ mode will install all the
 necessary LSP servers that you've configured `mason.nvim` to handle.
 
-**TODO**: Figure a headless alternative to install all the necessary LSP
+**NOTE**: If you invoke the `:PackerInstall` command for the first after
+setting up Neovim, you'll need to restart Neovim for the `:MasonToolInstall`
+command to work properly.
+
+**TODO**: Figure out a headless alternative to install all the necessary LSP
 servers.
 
 ## 🫂 Contributing & Supporting the Project
