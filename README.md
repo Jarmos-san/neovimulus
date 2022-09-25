@@ -87,9 +87,9 @@ installation.
 That said, invoking `:MasonToolInstall` in _Command_ mode will install all the
 necessary LSP servers that you've configured `mason.nvim` to handle.
 
-**NOTE**: If you invoke the `:PackerInstall` command for the first after
-setting up Neovim, you'll need to restart Neovim for the `:MasonToolInstall`
-command to work properly.
+**NOTE**: If you invoke the `:PackerInstall` command for the first after setting
+up Neovim, you'll need to restart Neovim for the `:MasonToolInstall` command to
+work properly.
 
 **TODO**: Figure out a headless alternative to install all the necessary LSP
 servers.
@@ -107,12 +107,12 @@ started.
 
 ### How to Contribute to the Project
 
-There are numerous ways to contribute to the project & here are a few ways I
-can think of on the top of my head.
+There are numerous ways to contribute to the project & here are a few ways I can
+think of on the top of my head.
 
 - Found bugs? Report it by opening an [issue thread][4].
-- Have a better plugin or an enhancement suggestions? Let the author know
-  about it.
+- Have a better plugin or an enhancement suggestions? Let the author know about
+  it.
 - Are you interested in writing Lua code or perhaps use this project as your
   own? Then feel free to share a PR or two.
 - Found the project useful to get started with working on Neovim ASAP? Then
@@ -121,8 +121,8 @@ can think of on the top of my head.
 ### Setting Up a Development Environment
 
 If you have some better enhancement suggestions or perhaps a bug fix? Then all
-sort of PRs are welcome! But before you share a PR or two you'll need to setup
-a local development environment on your system. Only thereafter can you start
+sort of PRs are welcome! But before you share a PR or two you'll need to setup a
+local development environment on your system. Only thereafter can you start
 developing the project. Hence the following steps will help you setup the
 development environment the correct way.
 
@@ -156,11 +156,11 @@ development environment the correct way.
    container as well. With the necessary changes/enhancements made feel free to
    share a PR which will then be reviewed before merged to the `main` branch.
 
-6. Something to keep in mind is the `git`-based development workflow the
-   project follows & about [semver][10]. Any new development is performed
-   directly on the `main` branch. And when a specific milestone is reached, a
-   commit is tagged signifying a frozen & stable version. Thereafter, moving
-   forward all or any breaking changes will happen in a new MAJOR version.
+6. Something to keep in mind is the `git`-based development workflow the project
+   follows & about [semver][10]. Any new development is performed directly on
+   the `main` branch. And when a specific milestone is reached, a commit is
+   tagged signifying a frozen & stable version. Thereafter, moving forward all
+   or any breaking changes will happen in a new MAJOR version.
 
 That said, if you've any questions related to the development of this project,
 please feel to reach out to author & maintainer of the project!
@@ -199,7 +199,8 @@ For more information on the licensing T&Cs, feel free to refer to the
 [3]: https://github.com/Jarmos-san/dotfiles
 [4]: https://github.com/Jarmos-san/neovim-docker/issues/new/choose
 [5]: https://www.docker.com
-[6]: https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp
+[6]:
+  https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp
 [7]: https://sw.kovidgoyal.net/kitty
 [8]: https://taskfile.dev
 [9]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
