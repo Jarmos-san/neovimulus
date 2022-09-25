@@ -22,15 +22,8 @@ unreleased features, check out the `main` branch.
   autocompletion menu.
 - Added a `Taskfile` entry for cleaning up after work on the project is
   complete.
-- Added Treesitter support with the [`nvim-treesitter/nvim-treesitter`][]
+- Added Treesitter support with the [`nvim-treesitter/nvim-treesitter`][12]
   plugin.
-
-TODO:
-
-1. Fix the issue with missing C compiler in the container.
-2. Configure the `Dockerfile` to install all the necessary packages at one go
-   to reduce the build time & the image size as well.
-3. Ensure Treesitter is installed & works well.
 
 More changes to the configuration will be listed & documented here as
 necessary.
@@ -105,3 +98,4 @@ contain breaking changes).
 [9]: https://github.com/neovim/nvim-lspconfig
 [10]: https://github.com/williamboman/mason
 [11]: https://taskfile.dev
+[12]: https://github.com/nvim-treesitter/nvim-treesitter
