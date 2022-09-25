@@ -79,13 +79,7 @@ packer.startup({
 				})
 			end,
 			config = function()
-				require("nvim-treesitter.configs").setup({
-					ensure_installed = { "lua" },
-					highlight = { enable = true },
-					incremental_selection = { enable = false },
-					indent = { enable = false },
-					folding = { enable = false },
-				})
+				require("jarmos.plugins.treesitter").setup()
 			end,
 		})
 	end,
