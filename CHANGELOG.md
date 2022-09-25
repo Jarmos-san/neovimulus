@@ -13,6 +13,21 @@ unreleased features, check out the `main` branch.
 
 ### Added
 
+More changes to the configuration will be listed & documented here as
+necessary.
+
+## [1.2.0] - 2022-09-25
+
+This release introduces some Quality-of-Life (QoL) improvements for better
+syntax highlighting using the [`nvim-treesitter`][12] plugin. For those
+interested in developing & moving the project further, the release also
+introduces a `Taskfile` which makes the user arbitrary Bash scripts. Hence
+making development on the project a more pleasant experience.
+
+That said, the release is still backwards-compatible & there's no breaking
+changes yet. For more information on the QoL changes introduced to the project
+see following points:
+
 - Create a bare minimum [Taskfile][11] for better quality-of-life when working
   from the CLI environment.
 - Create an experimental `protected_call()` wrapper function to load a Lua
@@ -25,10 +40,7 @@ unreleased features, check out the `main` branch.
 - Added Treesitter support with the [`nvim-treesitter/nvim-treesitter`][12]
   plugin.
 
-More changes to the configuration will be listed & documented here as
-necessary.
-
-## [1.0.0] - 2022-08-22
+## [1.0.0] - 2022-09-22
 
 This is the public release of the project which has been long overdue! To be
 able to finally release the first major version of the project is an experience
