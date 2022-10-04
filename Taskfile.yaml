@@ -64,5 +64,7 @@ tasks:
 
       This command will create a local Docker image of the Neovim container. This
       should be ideally done for testing & debugging purposes only.
+    env:
+      DOCKER_BUILDKIT: 1
     cmds:
       - docker build . --tag neovim:dev
