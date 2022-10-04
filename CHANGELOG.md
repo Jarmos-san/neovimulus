@@ -24,6 +24,8 @@ necessary.
 - Added & configured the [`Comment.nvim`][15] plugin for easier commenting based
   on Treesitter parsers.
 - Added some Treesitter modules for better brackets highlighting & much more.
+- Refactored the `Taskfile.yml` to use the [BuildKit][16] backend when building
+  the Docker images.
 
 ### Changes to Add Later
 
@@ -148,3 +150,4 @@ contain breaking changes).
 [13]: https://github.com/nvim-neo-tree/neo-tree.nvim
 [14]: https://github.com/windwp/nvim-autopairs
 [15]: https://github.com/numToStr/Comment.nvim
+[16]: https://docs.docker.com/develop/develop-images/build_enhancements
