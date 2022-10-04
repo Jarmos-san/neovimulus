@@ -29,12 +29,12 @@ packer.startup({
 				require("jarmos.plugins.lsp").setup_completions()
 			end,
 			requires = {
-				{ "hrsh7th/cmp-nvim-lsp" },
-				{ "hrsh7th/cmp-buffer" },
-				{ "hrsh7th/cmp-path" },
-				{ "hrsh7th/cmp-cmdline" },
-				{ "saadparwaiz1/cmp_luasnip" },
-				{ "hrsh7th/cmp-nvim-lsp-signature-help" },
+				"hrsh7th/cmp-nvim-lsp",
+				"hrsh7th/cmp-buffer",
+				"hrsh7th/cmp-path",
+				"hrsh7th/cmp-cmdline",
+				"saadparwaiz1/cmp_luasnip",
+				"hrsh7th/cmp-nvim-lsp-signature-help",
 			},
 			after = "nvim-lspconfig",
 		})
@@ -83,11 +83,11 @@ packer.startup({
 			end,
             requires = {
                 -- Necessary plugin for proper commenting in JSX/TSX files.
-                { "JoosepAlviste/nvim-ts-context-commentstring" },
+                "JoosepAlviste/nvim-ts-context-commentstring",
                 -- Treesitter-based plugin for colourising brackets.
-                { "p00f/nvim-ts-rainbow" },
+                "p00f/nvim-ts-rainbow",
                 -- Treesitter-based plugin for automatically inserting/renaming HTML tags.
-                { "windwp/nvim-ts-autotag" },
+                "windwp/nvim-ts-autotag",
             },
 		})
 
