@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-docker run --interactive --tty --rm \
-  --volume "$(pwd)/init.lua:/root/.config/nvim/init.lua" \
-  --volume "$(pwd)/lua:/root/.config/nvim/lua" \
-  ghcr.io/jarmos-san/neovim-docker:latest
