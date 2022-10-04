@@ -16,6 +16,11 @@ environment is perfect for experimentation. You simply need to _pull_ the Docker
 image from the registry, see how things work out & delete the container (_and
 the image_) after you're done!
 
+**NOTE**: As of the recent commit, the project's `Dockerfile` downloads a
+pinned version of Neovim v0.7.2 to ensure maximum stability. At its current
+stage, there's no guranteed the project will work well with Neovim v.0.8. So,
+if you're willing to make the jump, please do so at your own discretion.
+
 ## 🦮 How to Use the Project
 
 The project is easy to use but before you get started using the project, there
@@ -38,7 +43,7 @@ docker pull ghcr.io/jarmos-san/neovim-docker:main
 
 # INFO: The following command downloads the latest pinned version of the
 # project.
-docker pull ghcr.io/jarmos-san/neovim-docker:v1.2.0
+docker pull ghcr.io/jarmos-san/neovim-docker:v1.2.1
 
 # Create the configuration filepath location, if it doesn't already exists.
 mkdir -p "~/.config/nvim" && cd "~/.config/nvim"
@@ -61,6 +66,13 @@ With the Neovim Docker container downloaded & spun up, its time to install the
 necessary plugins & perform some post-setup tasks like downloading LSP servers.
 This next section details some of those tasks which needs to be performed after
 setting up Neovim.
+
+**NOTE**: The project doesn't provide any convenient Bash scripts to automate
+the project setup on your local machine. This is intentional as Bash scripts
+are difficult to maintain. And not to forget it could lead to disastrous
+results as well (_like replacing your older Neovim configurations_). Instead it
+is **RECOMMENDED** to use a containerised environment to deal with Neovim in
+this project.
 
 ### ⚙️ Installing Plugins with `packer.nvim`
 
