@@ -16,6 +16,19 @@ unreleased features, check out the `main` branch.
 More changes to the configuration will be listed & documented here as
 necessary.
 
+- Replaced the arbitrary Bash scripts with the better `Taskfile.yml` which also
+  serves as a source of documentation.
+- Refactored the `Dockerfile` to be more efficient when installing packages.
+- Pin the Neovim version to `v0.7.2` for ensuring maximum stability.
+
+### Changes to Add Later
+
+Following are some changes/updates which will added to the project at some
+point in time.
+
+- Ensure the configuration doesn't introduce breaking-changes when migration to
+  Neovim v0.8.X.
+
 ## [1.2.0] - 2022-09-25
 
 This release introduces some Quality-of-Life (QoL) improvements for better
