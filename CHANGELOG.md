@@ -16,6 +16,15 @@ unreleased features, check out the `main` branch.
 More changes to the configuration will be listed & documented here as
 necessary.
 
+- Added a file-explorer plugin [`neo-tree`][13] for easier filesystem
+  navigation.
+- Added & configured the [`autopairs`][14] plugin for Treesitter-based
+  automatic brackets insertion.
+- Created a custom keymap to toggle open/close the file explorer more easily.
+- Added & configured the [`Comment.nvim`][15] plugin for easier commenting based
+  on Treesitter parsers.
+- Added some Treesitter modules for better brackets highlighting & much more.
+
 ### Changes to Add Later
 
 Following are some changes/updates which will added to the project at some
@@ -136,3 +145,6 @@ contain breaking changes).
 [10]: https://github.com/williamboman/mason
 [11]: https://taskfile.dev
 [12]: https://github.com/nvim-treesitter/nvim-treesitter
+[13]: https://github.com/nvim-neo-tree/neo-tree.nvim
+[14]: https://github.com/windwp/nvim-autopairs
+[15]: https://github.com/numToStr/Comment.nvim
