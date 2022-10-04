@@ -6,7 +6,7 @@ FROM ubuntu:22.10
 # Install some necessary tools for the container environment to work properly
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -qq --no-install-recommends \
-    apt-transport-https ca-certificates build-essential neovim git curl unzip && \
+    apt-transport-https ca-certificates build-essential neovim=0.7.2 git curl unzip && \
     apt-get clean && rm --recursive --force /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN update-ca-certificates
