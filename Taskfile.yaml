@@ -1,5 +1,7 @@
 version: "3"
 
+silent: true
+
 tasks:
   clean:
     desc: Clean up the system after all development tasks are complete.
