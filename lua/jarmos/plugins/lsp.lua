@@ -41,6 +41,7 @@ end
 
 function M.setup_completions()
 	local cmp = require("cmp")
+    local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 	local lspkind_icons = {
 		Text = "",
@@ -126,6 +127,11 @@ function M.setup_completions()
 			{ name = "path" },
 		}),
 	})
+
+    cmp.event:on(
+        "confirm_done",
+        cmp_autopairs.on_confirm_done()
+    )
 end
 
 return M
