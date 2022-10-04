@@ -98,6 +98,31 @@ packer.startup({
                 require("jarmos.plugins.comment").config()
             end
         })
+
+        -- Treesitter-based plugin for automatic brackets insertion.
+        use({
+            "windwp/nvim-autopairs",
+            config = function()
+                require("nvim-autopairs").setup({
+                    check_ts = true,
+                })
+            end
+        })
+
+        -- A more modern file explorer for Neovim which is based on Lua.
+        use({
+            "nvim-neo-tree/neo-tree.nvim",
+            branch = "v2.x",
+            requires = {
+                "nvim-lua/plenary.nvim",
+                "kyazdani42/nvim-web-devicons",
+                "MunifTanjim/nui.nvim"
+            },
+            config = function()
+                require("jarmos.plugins.neotree").config()
+            end
+        })
+
 	end,
 	config = {
 		display = {
