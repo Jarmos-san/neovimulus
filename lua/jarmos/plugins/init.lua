@@ -70,7 +70,7 @@ packer.startup({
 			end,
 		})
 
-		-- FIXME: Configure the Docker container with a C compiler for the plugin to work properly.
+        -- Plugin for better syntax highlighting & among other goodies!
 		use({
 			"nvim-treesitter/nvim-treesitter",
 			run = function()
@@ -81,7 +81,23 @@ packer.startup({
 			config = function()
 				require("jarmos.plugins.treesitter").setup()
 			end,
+            requires = {
+                -- Necessary plugin for proper commenting in JSX/TSX files.
+                { "JoosepAlviste/nvim-ts-context-commentstring" },
+                -- Treesitter-based plugin for colourising brackets.
+                { "p00f/nvim-ts-rainbow" },
+                -- Treesitter-based plugin for automatically inserting/renaming HTML tags.
+                { "windwp/nvim-ts-autotag" },
+            },
 		})
+
+        -- Plugin for easier commenting around the source code based on Treesitter parsing.
+        use({
+            "numToStr/Comment.nvim",
+            config = function()
+                require("jarmos.plugins.comment").config()
+            end
+        })
 	end,
 	config = {
 		display = {
