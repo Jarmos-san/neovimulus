@@ -3,7 +3,37 @@ version: "3"
 silent: true
 
 tasks:
-  clean:
+  default:
+    desc: Start the dev version of the containerised Neovim environment.
+    summary: |
+      Start the dev version of the containerised Neovim environment.
+
+      This default Task will start the development version of the containerised
+      Neovim environment.
+    deps:
+      - build
+    cmds:
+      - docker run --interactive --tty --rm
+        --volume "$(pwd)/init.lua:/root/.config/nvim/init.lua"
+        --volume "$(pwd)/lua:/root/.config/nvim/lua"
+        neovim:dev
+
+  nvim-latest:
+    desc: Start a tagged version of the containerised Neovim environment.
+    summary: |
+      Start a tagged version of the containerised Neovim environment to check
+      compatibility.
+
+      This default Task will start a tagged version of the containerised Neovim
+      environment. Use this Task when you want to try out the latest frozen configuration
+      for a Neovim environment.
+    cmds:
+      - docker run --interactive --tty --rm
+        --volume "$(pwd)/init.lua:/root/.config/nvim/init.lua"
+        --volume "$(pwd)/lua:/root/.config/nvim/lua"
+        ghcr.io/jarmos-san/neovim-docker:latest
+
+  cleanup:
     desc: Clean up the system after all development tasks are complete.
     summary: |
       Cleanup system after development is complete.
@@ -14,25 +44,10 @@ tasks:
       NOTE: This is a destructive process. Please read the set of commands it
       invokes before taking an irreversible action.
     cmds:
-      - docker system prune --all --force
-      - rm --recursive --force /plugins
-
-  start:
-    desc: Start Neovim inside a Docker container
-    summary: |
-      Start Neovim inside a Docker container.
-
-      This command will create a Docker container with Neovim running inside it.
-      The container has all the necessary Neovim runtime dependencies like Python,
-      Node & so on which is required by some plugins.
-    cmds:
-      - docker run --interactive --tty --rm \
-        --volume "$(pwd)/init.lua:/root/.config/nvim/init.lua" \
-        --volume "$(pwd)/lua:/root/.config/nvim/lua" \
-        ghcr.io/jarmos-san/neovim-docker:main
+      - docker system prune --force
 
   release:
-    desc: Create a public versioned release of the project on GitHub.
+    desc: Create a public versioned release of the project on GitHub (TODO).
     summary: |
       Create a public release on GitHub.
 
@@ -46,3 +61,5 @@ tasks:
 
       This command will create a local Docker image of the Neovim container. This
       should be ideally done for testing & debugging purposes only.
+    cmds:
+      - docker build . --tag neovim:dev
