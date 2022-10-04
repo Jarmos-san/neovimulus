@@ -5,17 +5,11 @@ FROM ubuntu:22.10
 
 # Install some necessary tools for the container environment to work properly
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    apt-transport-https ca-certificates build-essential
+    DEBIAN_FRONTEND=noninteractive apt-get install -qq --no-install-recommends \
+    apt-transport-https ca-certificates build-essential neovim git curl unzip && \
+    apt-get clean && rm --recursive --force /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 RUN update-ca-certificates
-
-# Install Neovim & its dependencies.
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    neovim git curl unzip
-
-# Cleanup some redundant files & folders to keep the container lean & slim.
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Set the "LANG" environment variable for Neovim is showcase UTF-8 encoded
 # files properly.
