@@ -24,6 +24,8 @@ least have the following tools installed before proceeding ahead:
 
 - [Docker][5]
 - A modern Terminal Emulator (I suggest going with [Kitty][6])
+- (_Optional_) [`Task`][11] for those interested in developing the project
+  and/or using the latest, unstable & a non-minimal setup.
 
 With the prerequisite tools downloaded & setup, run the following command on
 your preferred terminal:
@@ -143,7 +145,7 @@ development environment the correct way.
 3. Change the current directory & run the Docker container interactively.
 
    ```console
-   cd neovim-docker && task start
+   cd neovim-docker && task
    ```
 
 4. If you followed the steps letter-to-letter, you should've an interactive
@@ -199,9 +201,9 @@ For more information on the licensing T&Cs, feel free to refer to the
 [3]: https://github.com/Jarmos-san/dotfiles
 [4]: https://github.com/Jarmos-san/neovim-docker/issues/new/choose
 [5]: https://www.docker.com
-[6]:
-  https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp
+[6]: https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp
 [7]: https://sw.kovidgoyal.net/kitty
 [8]: https://taskfile.dev
 [9]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [10]: https://semver.org
+[11]: https://taskfile.dev
