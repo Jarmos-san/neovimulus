@@ -5,6 +5,9 @@
 --]
 
 local map = vim.keymap
+local opts = {
+    silent = true
+}
 
 -- Basic keymaps for better navigation within Neovim.
 map.set("i", "jk", "<Esc>") -- Press "jk" in quick succession to exit Insert mode.
@@ -30,3 +33,6 @@ map.set("n", "<C-w><left>", "<C-w><")
 map.set("n", "<C-w><right>", "<C-w>>")
 map.set("n", "<C-w><up>", "<C-w>+")
 map.set("n", "<C-w><down>", "<C-w>-")
+
+-- Toggle the file-explorer more easily
+map.set("n", "<Leader>e", ":NeoTreeFocusToggle<CR>", opts)
