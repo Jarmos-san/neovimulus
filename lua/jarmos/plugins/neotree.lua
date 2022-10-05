@@ -18,7 +18,7 @@ function M.config()
             width = "25"
         },
         filesystem = {
-            hijack_netrw_behavior = "open_default",
+            hijack_netrw_behavior = "open_current",
         },
     })
 end
