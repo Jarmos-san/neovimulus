@@ -26,6 +26,15 @@ necessary.
 - Added some Treesitter modules for better brackets highlighting & much more.
 - Refactored the `Taskfile.yml` to use the [BuildKit][16] backend when building
   the Docker images.
+- Added the [`lualine`][17] plugin to configure the `statusline`.
+- Added the [`gitsigns`][18] plugin for the version-control features.
+- Added the [`indent-blankline`][19] plugin to visualise whitespace & indents
+  better.
+- Uncommented an autocommand to automatically source the `init.lua` file (but
+  it doesn't work as expected).
+- Configured Neovim settings such that the whitespaces are more visually
+  legible & not cluttered.
+- Refactored some of the older keymaps & added new relevant ones.
 
 ### Changes to Add Later
 
@@ -151,3 +160,6 @@ contain breaking changes).
 [14]: https://github.com/windwp/nvim-autopairs
 [15]: https://github.com/numToStr/Comment.nvim
 [16]: https://docs.docker.com/develop/develop-images/build_enhancements
+[17]: https://github.com/nvim-lualine/lualine.nvim
+[18]: https://github.com/lewis6991/gitsigns.nvim
+[19]: https://github.com/lukas-reineke/indent-blankline.nvim
