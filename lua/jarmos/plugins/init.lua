@@ -123,6 +123,33 @@ packer.startup({
             end
         })
 
+        -- Plugin for visualising the indents & blanklines properly.
+        use({
+            "lukas-reineke/indent-blankline.nvim",
+            config = function()
+                require("jarmos.plugins.indent-blankline").config()
+            end
+        })
+
+        -- Configure Neovim to have version-control features.
+        use({
+            "lewis6991/gitsigns.nvim",
+            config = function()
+                require("jarmos.plugins.gitsigns").config()
+            end
+        })
+
+        -- Custom statusline with additional features like version-control information.
+        use({
+            "nvim-lualine/lualine.nvim",
+            requires = {
+                "kyazdani42/nvim-web-devicons",
+                opt = true
+            },
+            config = function()
+                require("jarmos.plugins.lualine").config()
+            end,
+        })
 	end,
 	config = {
 		display = {
