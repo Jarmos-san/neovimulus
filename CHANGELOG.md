@@ -35,6 +35,8 @@ necessary.
 - Configured Neovim settings such that the whitespaces are more visually
   legible & not cluttered.
 - Refactored some of the older keymaps & added new relevant ones.
+- Configured the `Dockerfile` to download Neovim from GitHub Releases instead.
+- Refactored the LSP configurations to adhere to a deprecation notice.
 
 ### Changes to Add Later
 
