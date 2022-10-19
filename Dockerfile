@@ -11,7 +11,7 @@ RUN apt-get update && \
     git \
     curl \
     unzip \
-    neovim
+    wget
 
 # Necessary for Git to work properly.
 RUN update-ca-certificates
