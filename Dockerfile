@@ -20,6 +20,12 @@ RUN update-ca-certificates
 # files properly.
 ENV LANG C.UTF-8
 
+# Download & install the latest version of Neovim.
+RUN LATEST_VERSION=$(curl --silent "https://api.github.com/repos/neovim/neovim/releases/latest" | grep tag_name | sed -E 's/.*"([^"]+)".*/\1/') && \
+    wget "https://github.com/neovim/neovim/releases/download/$LATEST_VERSION/nvim-linux64.deb" && \
+    apt-get install ./nvim-linux64.deb && \
+    rm --recursive --force ./nvim-linux64.deb
+
 # Install "packer.nvim" to install the Neovim plugins.
 RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim \
     /root/.local/share/nvim/site/pack/packer/start/packer.nvim
