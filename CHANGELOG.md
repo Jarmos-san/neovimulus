@@ -37,6 +37,9 @@ necessary.
 - Refactored some of the older keymaps & added new relevant ones.
 - Configured the `Dockerfile` to download Neovim from GitHub Releases instead.
 - Refactored the LSP configurations to adhere to a deprecation notice.
+- Refactored the `Dockerfile` & the `packer.nvim` configurations to lazy-load the
+  plugin upon invoking a particular set of commands.
+- Pinned a bunch of plugins to a specific versions for increased stability.
 
 ### Changes to Add Later
 
