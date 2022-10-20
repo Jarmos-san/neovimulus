@@ -40,6 +40,8 @@ necessary.
 - Refactored the `Dockerfile` & the `packer.nvim` configurations to lazy-load the
   plugin upon invoking a particular set of commands.
 - Pinned a bunch of plugins to a specific versions for increased stability.
+- Introduced a ton of quality-of-life improvements like automating code quality
+  checks & so on.
 
 ### Changes to Add Later
 
