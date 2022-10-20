@@ -46,6 +46,7 @@ packer.startup({
 		use({
 			"L3MON4D3/LuaSnip",
 			after = "nvim-cmp",
+            tag = "*" -- Download the latest tagged version of the plugin.
 		})
 
 		-- Install plugin for configuring the LSP client.
@@ -54,6 +55,7 @@ packer.startup({
 			config = function()
 				require("jarmos.plugins.lsp").setup_lsp()
 			end,
+            tag = "*" -- Download the latest tagged version instead of the latest commits.
 		})
 
 		use({
@@ -99,7 +101,8 @@ packer.startup({
             "numToStr/Comment.nvim",
             config = function()
                 require("jarmos.plugins.comment").config()
-            end
+            end,
+            tag = "*" -- Download the latest release instead of the latest breaking changes.
         })
 
         -- Treesitter-based plugin for automatic brackets insertion.
@@ -115,7 +118,7 @@ packer.startup({
         -- A more modern file explorer for Neovim which is based on Lua.
         use({
             "nvim-neo-tree/neo-tree.nvim",
-            branch = "v2.x",
+            tag = "*", -- Download the latest tagged version instead of the latest commits.
             requires = {
                 "nvim-lua/plenary.nvim",
                 "kyazdani42/nvim-web-devicons",
@@ -131,7 +134,8 @@ packer.startup({
             "lukas-reineke/indent-blankline.nvim",
             config = function()
                 require("jarmos.plugins.indent-blankline").config()
-            end
+            end,
+            tag = "*" -- Download the latest tagged version instead of the latest commits.
         })
 
         -- Configure Neovim to have version-control features.
@@ -139,7 +143,8 @@ packer.startup({
             "lewis6991/gitsigns.nvim",
             config = function()
                 require("jarmos.plugins.gitsigns").config()
-            end
+            end,
+            tag = "*" -- Download the latest tagged version instead of the latest commits.
         })
 
         -- Custom statusline with additional features like version-control information.
