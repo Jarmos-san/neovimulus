@@ -1,3 +1,5 @@
+vim.cmd([[ packadd packer.nvim ]])
+
 local status, packer = pcall(require, "packer")
 
 if not status then
@@ -5,13 +7,14 @@ if not status then
 	return
 end
 
-vim.cmd([[ packadd packer.nvim ]])
-
 packer.startup({
 	function(use)
 		use({
 			-- Allow "packer.nvim" to keep itself updated!
 			"wbthomason/packer.nvim",
+            opt = true,
+            -- Only lazy-load the plugin when the following commands are invoked!
+            cmd = { "PackerSync", "PackerCompile", "PackerInstall", "PackerUpdate", "PackerSnapshot" }
 		})
 
 		use({
