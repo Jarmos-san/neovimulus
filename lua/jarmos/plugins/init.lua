@@ -75,6 +75,15 @@ packer.startup({
 			end,
 		})
 
+        -- Plugin for managing LSP-based diagnostics, code actions & much more capabilities.
+        use({
+            "jose-elias-alvarez/null-ls.nvim",
+            config = function()
+                require("jarmos.plugins.null-ls").config()
+            end,
+            requires = { "nvim-lua/plenary.nvim" }
+        })
+
         -- Plugin for better syntax highlighting & among other goodies!
 		use({
 			"nvim-treesitter/nvim-treesitter",
