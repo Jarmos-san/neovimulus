@@ -97,11 +97,11 @@ packer.startup({
 			end,
             requires = {
                 -- Necessary plugin for proper commenting in JSX/TSX files.
-                "JoosepAlviste/nvim-ts-context-commentstring",
+                { "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" },
                 -- Treesitter-based plugin for colourising brackets.
-                "p00f/nvim-ts-rainbow",
+                { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" },
                 -- Treesitter-based plugin for automatically inserting/renaming HTML tags.
-                "windwp/nvim-ts-autotag",
+                { "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
             },
 		})
 
@@ -111,7 +111,8 @@ packer.startup({
             config = function()
                 require("jarmos.plugins.comment").config()
             end,
-            tag = "*" -- Download the latest release instead of the latest breaking changes.
+            tag = "*", -- Download the latest release instead of the latest breaking changes.
+            after = "nvim-ts-context-commentstring"
         })
 
         -- Treesitter-based plugin for automatic brackets insertion.
