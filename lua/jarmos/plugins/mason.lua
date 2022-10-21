@@ -28,8 +28,8 @@ function M.install_servers()
 	installer.setup({
 		ensure_installed = {
 			"lua-language-server",
-			--[[ "stylua", ]]
-			--[[ "selene", ]]
+			"stylua",
+			"selene",
 		},
 	})
 end
