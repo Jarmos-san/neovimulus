@@ -16,97 +16,17 @@ environment is perfect for experimentation. You simply need to _pull_ the Docker
 image from the registry, see how things work out & delete the container (_and
 the image_) after you're done!
 
-**NOTE**: As of the recent commit, the project's `Dockerfile` downloads a pinned
-version of Neovim v0.7.2 to ensure maximum stability. At its current stage,
-there's no guranteed the project will work well with Neovim v.0.8. So, if you're
-willing to make the jump, please do so at your own discretion.
-
 ## 🦮 How to Use the Project
 
-The project is easy to use but before you get started using the project, there
-are a few prerequisite tools you'll need in your local system. So ensure you at
-least have the following tools installed before proceeding ahead:
+Using the project is **VERY** simple & all you'll need is [Docker][5] & a
+terminal emulator (I prefer [Kitty][7]). So, if you've Docker installed on your
+local machine, you simply need to download the Docker Image & spin it up.
 
-- [Docker][5]
-- A modern Terminal Emulator (I suggest going with [Kitty][6])
-- (_Optional_) [`Task`][11] for those interested in developing the project
-  and/or using the latest, unstable & a non-minimal setup.
-
-With the prerequisite tools downloaded & setup, run the following command on
-your preferred terminal:
-
-```bash
-# Pull the Docker image from GitHub Registry.
-# INFO: The following command downloads the latest development version of the
-# project.
-docker pull ghcr.io/jarmos-san/neovim-docker:main
-
-# INFO: The following command downloads the latest pinned version of the
-# project.
-docker pull ghcr.io/jarmos-san/neovim-docker:v1.2.1
-
-# Create the configuration filepath location, if it doesn't already exists.
-mkdir -p "~/.config/nvim" && cd "~/.config/nvim"
-
-# Clone the remote repository to the local system
-git clone git@github.com:Jarmos-san/neovim-docker
-
-# Run the container in interactive mode with the necessary files & folders
-# mounted in to the container properly.
-docker run -it --rm \
-    -v "$(pwd)/init.lua:/root/.config/nvim/init.lua" \
-    -v "$(pwd)lua:/root/.config/nvim/lua" \
-    ghcr.io/jarmos-san/neovim-docker:main
-```
-
-The command will open up an interactive Neovim instance & the built container
-will also be immediately removed when you exit the Neovim environment!
-
-With the Neovim Docker container downloaded & spun up, its time to install the
-necessary plugins & perform some post-setup tasks like downloading LSP servers.
-This next section details some of those tasks which needs to be performed after
-setting up Neovim.
-
-**NOTE**: The project doesn't provide any convenient Bash scripts to automate
-the project setup on your local machine. This is intentional as Bash scripts are
-difficult to maintain. And not to forget it could lead to disastrous results as
-well (_like replacing your older Neovim configurations_). Instead it is
-**RECOMMENDED** to use a containerised environment to deal with Neovim in this
-project.
-
-### ⚙️ Installing Plugins with `packer.nvim`
-
-The container come packaged with `git` for Neovim to download & setup the
-[`packer.nvim`][1] package manager for Neovim. To help it install all the
-necessary plugins, run `:PackerSync` in _Command_ mode.
-
-Additionally, you could also perform a headless plugin installation by invoking
-the following command:
-
-```bash
-nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
-```
-
-### Installing LSP Servers with `mason.nvim`
-
-Neovim comes with a builtin LSP client but the individual servers has to be
-downloaded seperately. Unfortunately, the said servers are often distributed
-through multiple package managers like `npm`, `brew` & so on.
-
-Keeping a track of all the package manager & which manager is responsible to
-download which LSP server can be difficult to track. Hence, to help with such
-scenarios, the [`mason.nvim`][2] plugin helps a lot to automate LSP server
-installation.
-
-That said, invoking `:MasonToolInstall` in _Command_ mode will install all the
-necessary LSP servers that you've configured `mason.nvim` to handle.
-
-**NOTE**: If you invoke the `:PackerInstall` command for the first after setting
-up Neovim, you'll need to restart Neovim for the `:MasonToolInstall` command to
-work properly.
-
-**TODO**: Figure out a headless alternative to install all the necessary LSP
-servers.
+For a detailed instructions on getting started with the project, I suggest
+taking a look at the [Usage Instructions & Guidelines][12]. The said section
+discusses everything about setting up the configuration files, installing
+plugins & much more. So, do give it a thorough read before diving head-first
+into the project.
 
 ## 🫂 Contributing & Supporting the Project
 
@@ -132,49 +52,10 @@ think of on the top of my head.
 - Found the project useful to get started with working on Neovim ASAP? Then
   consider sponsoring the author as it keeps him motivated & pays the bills.
 
-### Setting Up a Development Environment
-
-If you have some better enhancement suggestions or perhaps a bug fix? Then all
-sort of PRs are welcome! But before you share a PR or two you'll need to setup a
-local development environment on your system. Only thereafter can you start
-developing the project. Hence the following steps will help you setup the
-development environment the correct way.
-
-1. Ensure you've the following prerequisite tools installed locally:
-
-   - [Docker][5]
-   - A terminal emulator (like [kitty][7])
-   - [Task][8] which is a good alternative to GNU Make.
-   - Git for version-control.
-
-2. With the prerequisite tools installed, you'll now want to [fork][9] & clone
-   the forked repository locally.
-
-   ```console
-   git clone git@github.com:<YOUR_GITHUB_USERNAME>/neovim-docker
-   ```
-
-3. Change the current directory & run the Docker container interactively.
-
-   ```console
-   cd neovim-docker && task
-   ```
-
-4. If you followed the steps letter-to-letter, you should've an interactive
-   Neovim session running. You can now run all necessary Neovim commands like
-   `:PackerSync` to install/update the plugins or `:MasonToolInstall` to
-   install/update LSP servers.
-
-5. Inside the interactive Neovim container environment you can edit the Lua
-   files as you normally would. And the changes will update outside the
-   container as well. With the necessary changes/enhancements made feel free to
-   share a PR which will then be reviewed before merged to the `main` branch.
-
-6. Something to keep in mind is the `git`-based development workflow the project
-   follows & about [semver][10]. Any new development is performed directly on
-   the `main` branch. And when a specific milestone is reached, a commit is
-   tagged signifying a frozen & stable version. Thereafter, moving forward all
-   or any breaking changes will happen in a new MAJOR version.
+To learn more about contributing to the project, refer to the "[Developer
+Guidelines][13]" section of the wiki. Also don't forget to check out the more
+detailed instructions as laid down in the "[Contributing Guidelines][14]" for
+the project.
 
 That said, if you've any questions related to the development of this project,
 please feel to reach out to author & maintainer of the project!
@@ -182,19 +63,10 @@ please feel to reach out to author & maintainer of the project!
 ## 📚 Informative Resources for Learning About the Tools
 
 Neovim has a significant learning curve but its worthwhile especially for
-power-users (_and if you suffer from
-[Carpal Tunnel Syndrome (CTS)](https://www.ninds.nih.gov/carpal-tunnel-syndrome-fact-sheet)_).
-So for all the beginners out there, following are some resources which you might
-find useful while learning the tools in use:
-
-- [OpenVim](https://www.openvim.com) which is an web-based platform to learn
-  more about navigating around in Vim (_or Neovim_).
-- [Vim Adventures](https://vim-adventures.com) is a web-based game for teaching
-  Vim in a fun, interactive format.
-- [Docker Playground](https://www.docker.com/play-with-docker) to learn Docker
-  right from within your favourite browser.
-- [Setup `nvim-lspconfig` with `nvim-cmp`][6] to learn about setting up LSP &
-  autocompletion.
+power-users (_and if you suffer from [Carpal Tunnel Syndrome (CTS)][15]_). So
+if you're starting to learn to Vim, I've also compiled a couple of resources on
+the same topic. You can find all the list of resources in
+"[Learning Resources][16]" section of the wiki.
 
 ## 📄 Usage Terms & Conditions
 
@@ -220,3 +92,8 @@ For more information on the licensing T&Cs, feel free to refer to the
 [9]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [10]: https://semver.org
 [11]: https://taskfile.dev
+[12]: https://github.com/Jarmos-san/neovim-docker/wiki/Usage-Instructions-&-Guidelines
+[13]: https://github.com/Jarmos-san/neovim-docker/wiki/Developer-Guidelines
+[14]: https://github.com
+[15]: https://www.ninds.nih.gov/carpal-tunnel-syndrome-fact-sheet
+[16]: https://github.com/Jarmos-san/neovim-docker/wiki/Learning-Resources
