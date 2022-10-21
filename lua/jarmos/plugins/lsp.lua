@@ -9,9 +9,7 @@ function M.setup_lsp()
 		-- TODO: Add the LSP-based keymaps over here.
 	end
 
-	local capabilities = require("cmp_nvim_lsp").default_capabilities(
-		vim.lsp.protocol.make_client_capabilities()
-	)
+	local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 	require("lspconfig").sumneko_lua.setup({
 		on_attach = on_attach,
@@ -41,7 +39,7 @@ end
 
 function M.setup_completions()
 	local cmp = require("cmp")
-    local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 	local lspkind_icons = {
 		Text = "",
@@ -78,18 +76,13 @@ function M.setup_completions()
 			if vim.api.nvim_get_mode().mode == "c" then
 				return true
 			else
-				return not context.in_treesitter_capture("comment")
-					and not context.in_syntax_group("Comment")
+				return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
 			end
 		end,
 		-- INFO: Make the completion menu more informative & good-looking.
 		formatting = {
 			format = function(entry, vim_item)
-				vim_item.kind = string.format(
-					"%s %s",
-					lspkind_icons[vim_item.kind],
-					vim_item.kind
-				)
+				vim_item.kind = string.format("%s %s", lspkind_icons[vim_item.kind], vim_item.kind)
 				vim_item.menu = ({
 					buffer = "[Buffer]",
 					nvim_lsp = "[LSP]",
@@ -128,10 +121,7 @@ function M.setup_completions()
 		}),
 	})
 
-    cmp.event:on(
-        "confirm_done",
-        cmp_autopairs.on_confirm_done()
-    )
+	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
 return M
