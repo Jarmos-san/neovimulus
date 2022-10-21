@@ -42,14 +42,13 @@ necessary.
 - Pinned a bunch of plugins to a specific versions for increased stability.
 - Introduced a ton of quality-of-life improvements like automating code quality
   checks & so on.
+- Added & configured `null-ls` to extend the core Neovim capabilities like code
+  actions, diagnostics & so on.
 
 ### Changes to Add Later
 
 Following are some changes/updates which will added to the project at some
 point in time.
-
-- Ensure the configuration doesn't introduce breaking-changes when migration to
-  Neovim v0.8.X.
 
 ## [1.2.1] - 2022-10-04
 
