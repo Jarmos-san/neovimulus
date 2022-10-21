@@ -16,13 +16,39 @@ unreleased features, check out the `main` branch.
 More changes to the configuration will be listed & documented here as
 necessary.
 
+- Added a file-explorer plugin [`neo-tree`][13] for easier filesystem
+  navigation.
+- Added & configured the [`autopairs`][14] plugin for Treesitter-based
+  automatic brackets insertion.
+- Created a custom keymap to toggle open/close the file explorer more easily.
+- Added & configured the [`Comment.nvim`][15] plugin for easier commenting based
+  on Treesitter parsers.
+- Added some Treesitter modules for better brackets highlighting & much more.
+- Refactored the `Taskfile.yml` to use the [BuildKit][16] backend when building
+  the Docker images.
+- Added the [`lualine`][17] plugin to configure the `statusline`.
+- Added the [`gitsigns`][18] plugin for the version-control features.
+- Added the [`indent-blankline`][19] plugin to visualise whitespace & indents
+  better.
+- Uncommented an autocommand to automatically source the `init.lua` file (but
+  it doesn't work as expected).
+- Configured Neovim settings such that the whitespaces are more visually
+  legible & not cluttered.
+- Refactored some of the older keymaps & added new relevant ones.
+- Configured the `Dockerfile` to download Neovim from GitHub Releases instead.
+- Refactored the LSP configurations to adhere to a deprecation notice.
+- Refactored the `Dockerfile` & the `packer.nvim` configurations to lazy-load the
+  plugin upon invoking a particular set of commands.
+- Pinned a bunch of plugins to a specific versions for increased stability.
+- Introduced a ton of quality-of-life improvements like automating code quality
+  checks & so on.
+- Added & configured `null-ls` to extend the core Neovim capabilities like code
+  actions, diagnostics & so on.
+
 ### Changes to Add Later
 
 Following are some changes/updates which will added to the project at some
 point in time.
-
-- Ensure the configuration doesn't introduce breaking-changes when migration to
-  Neovim v0.8.X.
 
 ## [1.2.1] - 2022-10-04
 
@@ -136,3 +162,10 @@ contain breaking changes).
 [10]: https://github.com/williamboman/mason
 [11]: https://taskfile.dev
 [12]: https://github.com/nvim-treesitter/nvim-treesitter
+[13]: https://github.com/nvim-neo-tree/neo-tree.nvim
+[14]: https://github.com/windwp/nvim-autopairs
+[15]: https://github.com/numToStr/Comment.nvim
+[16]: https://docs.docker.com/develop/develop-images/build_enhancements
+[17]: https://github.com/nvim-lualine/lualine.nvim
+[18]: https://github.com/lewis6991/gitsigns.nvim
+[19]: https://github.com/lukas-reineke/indent-blankline.nvim

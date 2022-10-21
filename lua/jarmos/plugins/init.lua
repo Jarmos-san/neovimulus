@@ -1,3 +1,5 @@
+vim.cmd([[ packadd packer.nvim ]])
+
 local status, packer = pcall(require, "packer")
 
 if not status then
@@ -5,13 +7,14 @@ if not status then
 	return
 end
 
-vim.cmd([[ packadd packer.nvim ]])
-
 packer.startup({
 	function(use)
 		use({
 			-- Allow "packer.nvim" to keep itself updated!
 			"wbthomason/packer.nvim",
+			opt = true,
+			-- Only lazy-load the plugin when the following commands are invoked!
+			cmd = { "PackerSync", "PackerCompile", "PackerInstall", "PackerUpdate", "PackerSnapshot" },
 		})
 
 		use({
@@ -29,12 +32,12 @@ packer.startup({
 				require("jarmos.plugins.lsp").setup_completions()
 			end,
 			requires = {
-				{ "hrsh7th/cmp-nvim-lsp" },
-				{ "hrsh7th/cmp-buffer" },
-				{ "hrsh7th/cmp-path" },
-				{ "hrsh7th/cmp-cmdline" },
-				{ "saadparwaiz1/cmp_luasnip" },
-				{ "hrsh7th/cmp-nvim-lsp-signature-help" },
+				"hrsh7th/cmp-nvim-lsp",
+				"hrsh7th/cmp-buffer",
+				"hrsh7th/cmp-path",
+				"hrsh7th/cmp-cmdline",
+				"saadparwaiz1/cmp_luasnip",
+				"hrsh7th/cmp-nvim-lsp-signature-help",
 			},
 			after = "nvim-lspconfig",
 		})
@@ -43,6 +46,7 @@ packer.startup({
 		use({
 			"L3MON4D3/LuaSnip",
 			after = "nvim-cmp",
+			tag = "*", -- Download the latest tagged version of the plugin.
 		})
 
 		-- Install plugin for configuring the LSP client.
@@ -51,6 +55,7 @@ packer.startup({
 			config = function()
 				require("jarmos.plugins.lsp").setup_lsp()
 			end,
+			tag = "*", -- Download the latest tagged version instead of the latest commits.
 		})
 
 		use({
@@ -70,7 +75,16 @@ packer.startup({
 			end,
 		})
 
-		-- FIXME: Configure the Docker container with a C compiler for the plugin to work properly.
+		-- Plugin for managing LSP-based diagnostics, code actions & much more capabilities.
+		use({
+			"jose-elias-alvarez/null-ls.nvim",
+			config = function()
+				require("jarmos.plugins.null-ls").config()
+			end,
+			requires = { "nvim-lua/plenary.nvim" },
+		})
+
+		-- Plugin for better syntax highlighting & among other goodies!
 		use({
 			"nvim-treesitter/nvim-treesitter",
 			run = function()
@@ -80,6 +94,78 @@ packer.startup({
 			end,
 			config = function()
 				require("jarmos.plugins.treesitter").setup()
+			end,
+			requires = {
+				-- Necessary plugin for proper commenting in JSX/TSX files.
+				{ "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" },
+				-- Treesitter-based plugin for colourising brackets.
+				{ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" },
+				-- Treesitter-based plugin for automatically inserting/renaming HTML tags.
+				{ "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
+			},
+		})
+
+		-- Plugin for easier commenting around the source code based on Treesitter parsing.
+		use({
+			"numToStr/Comment.nvim",
+			config = function()
+				require("jarmos.plugins.comment").config()
+			end,
+			tag = "*", -- Download the latest release instead of the latest breaking changes.
+			after = "nvim-ts-context-commentstring",
+		})
+
+		-- Treesitter-based plugin for automatic brackets insertion.
+		use({
+			"windwp/nvim-autopairs",
+			config = function()
+				require("nvim-autopairs").setup({
+					check_ts = true,
+				})
+			end,
+		})
+
+		-- A more modern file explorer for Neovim which is based on Lua.
+		use({
+			"nvim-neo-tree/neo-tree.nvim",
+			tag = "*", -- Download the latest tagged version instead of the latest commits.
+			requires = {
+				"nvim-lua/plenary.nvim",
+				"kyazdani42/nvim-web-devicons",
+				"MunifTanjim/nui.nvim",
+			},
+			config = function()
+				require("jarmos.plugins.neotree").config()
+			end,
+		})
+
+		-- Plugin for visualising the indents & blanklines properly.
+		use({
+			"lukas-reineke/indent-blankline.nvim",
+			config = function()
+				require("jarmos.plugins.indent-blankline").config()
+			end,
+			tag = "*", -- Download the latest tagged version instead of the latest commits.
+		})
+
+		-- Configure Neovim to have version-control features.
+		use({
+			"lewis6991/gitsigns.nvim",
+			config = function()
+				require("jarmos.plugins.gitsigns").config()
+			end,
+			tag = "*", -- Download the latest tagged version instead of the latest commits.
+		})
+
+		-- Custom statusline with additional features like version-control information.
+		use({
+			"nvim-lualine/lualine.nvim",
+			requires = {
+				"kyazdani42/nvim-web-devicons",
+				opt = true,
+			},
+			config = function()
+				require("jarmos.plugins.lualine").config()
 			end,
 		})
 	end,
