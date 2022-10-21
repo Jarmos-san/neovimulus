@@ -63,10 +63,10 @@ please feel to reach out to author & maintainer of the project!
 ## 📚 Informative Resources for Learning About the Tools
 
 Neovim has a significant learning curve but its worthwhile especially for
-power-users (_and if you suffer from [Carpal Tunnel Syndrome (CTS)][15]_). So
-if you're starting to learn to Vim, I've also compiled a couple of resources on
-the same topic. You can find all the list of resources in
-"[Learning Resources][16]" section of the wiki.
+power-users (_and if you suffer from [Carpal Tunnel Syndrome (CTS)][15]_). So if
+you're starting to learn to Vim, I've also compiled a couple of resources on the
+same topic. You can find all the list of resources in "[Learning Resources][16]"
+section of the wiki.
 
 ## 📄 Usage Terms & Conditions
 
@@ -92,7 +92,8 @@ For more information on the licensing T&Cs, feel free to refer to the
 [9]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [10]: https://semver.org
 [11]: https://taskfile.dev
-[12]: https://github.com/Jarmos-san/neovim-docker/wiki/Usage-Instructions-&-Guidelines
+[12]:
+  https://github.com/Jarmos-san/neovim-docker/wiki/Usage-Instructions-&-Guidelines
 [13]: https://github.com/Jarmos-san/neovim-docker/wiki/Developer-Guidelines
 [14]: https://github.com
 [15]: https://www.ninds.nih.gov/carpal-tunnel-syndrome-fact-sheet
