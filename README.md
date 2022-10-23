@@ -85,16 +85,15 @@ For more information on the licensing T&Cs, feel free to refer to the
 [3]: https://github.com/Jarmos-san/dotfiles
 [4]: https://github.com/Jarmos-san/neovim-docker/issues/new/choose
 [5]: https://www.docker.com
-[6]:
-  https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp
+[6]: https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp
 [7]: https://sw.kovidgoyal.net/kitty
 [8]: https://taskfile.dev
 [9]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [10]: https://semver.org
 [11]: https://taskfile.dev
-[12]:
-  https://github.com/Jarmos-san/neovim-docker/wiki/Usage-Instructions-&-Guidelines
+[12]: https://github.com/Jarmos-san/neovim-docker/wiki/Usage-Instructions-&-Guidelines
 [13]: https://github.com/Jarmos-san/neovim-docker/wiki/Developer-Guidelines
 [14]: https://github.com
 [15]: https://www.ninds.nih.gov/carpal-tunnel-syndrome-fact-sheet
 [16]: https://github.com/Jarmos-san/neovim-docker/wiki/Learning-Resources
+[17]: https://smarttech101.com/nvim-lsp-diagnostics-keybindings-signs-virtual-texts
