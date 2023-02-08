@@ -31,9 +31,5 @@ RUN LATEST_VERSION=$(curl --silent "https://api.github.com/repos/neovim/neovim/r
     apt-get install ./nvim-linux64.deb && \
     rm --recursive --force ./nvim-linux64.deb
 
-# Install "packer.nvim" to install the Neovim plugins.
-RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim \
-    /root/.local/share/nvim/site/pack/packer/opt/packer.nvim
-
 # The command to invoke when Docker runs the container in interactive mode.
 ENTRYPOINT [ "/usr/bin/bash" ]
