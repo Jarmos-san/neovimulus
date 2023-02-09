@@ -2,7 +2,7 @@ return {
     {
         -- A pretty colorscheme inspired from the now defunct Atom editor.
         "navarasu/onedark.nvim",
-        event = { "BufReadPost", "BufNewFile" }, -- Load the plugin after a buffer is created/read.
+        event = "UIEnter", -- Load the colorscheme immediately after startup to avoid unexpected behaviours.
         config = function() -- Configuration for the colorscheme.
             require("configs.colorscheme")
         end,
