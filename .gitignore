@@ -105,4 +105,3 @@ tags
 
 !**/after/plugin/**/*.lua
 **/plugin/packer_compiled.lua
-
