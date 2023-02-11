@@ -35,3 +35,27 @@ autocmd("BufReadPost", {
         end
     end
 })
+
+-- INFO: See the documentations below for an explanation on it works:
+-- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim#events
+autocmd("User", {
+    desc = "Print a helpful message when Mason is about to install the LSP servers",
+    group = augroup("mason", { clear = true }),
+    pattern = "MasonToolsStartingInstall",
+    callback = function()
+        vim.schedule(function()
+            print("Mason is starting...")
+        end)
+    end,
+})
+
+autocmd("User", {
+    desc = "Print a helpful message when Mason is done updating the LSP servers",
+    group = augroup("mason", { clear = true }),
+    pattern = "MasonToolsUpdateCompleted",
+    callback = function()
+        vim.schedule(function()
+            print("Mason completed updating LSP servers...")
+        end)
+    end,
+})
