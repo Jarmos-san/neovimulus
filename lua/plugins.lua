@@ -100,13 +100,14 @@ return {
     {
         -- Plugin for using the builtin LSP client to hook into other non-LSP tools like Prettier & ESLint.
         "jose-elias-alvarez/null-ls.nvim",
+        disable = true, -- FIXME: Disable plugin temporarily until its fixed.
         event = "BufReadPost", -- Load the plugin only when the buffer is read & filetype is known.
         dependencies = { -- Load some necessary dependencies for the plugin.
             "nvim-lua/plenary.nvim",
             "neovim/nvim-lspconfig",
         },
         config = function() -- Configuration module for the plugin.
-            require("configs.null-ls")
+            -- require("configs.null-ls")
         end,
 
     },
