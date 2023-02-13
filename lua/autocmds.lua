@@ -59,3 +59,20 @@ autocmd("User", {
         end)
     end,
 })
+
+autocmd("User", {
+    desc = "Open the Alpha dashboard when the last buffer is closed instead of an empty buffer",
+    group = augroup("alpha_on_empty", { clear = true }),
+    pattern = "BDeletePre*",
+    callback = function(event)
+        local fallabck_name = vim.api.nvim_buf_get_name(event.buf)
+        local fallback_filetype = vim.api.nvim_buf_get_option(event.buf, "filetype")
+        local fallback_on_empty = fallback_name == "" and fallback_filetype == ""
+
+        if fallback_on_empty then
+            vim.cmd("Neotree close")
+            vim.cmd("Alpha")
+            vim.cmd(event.buf .. "bwipeout")
+        end
+    end,
+})
