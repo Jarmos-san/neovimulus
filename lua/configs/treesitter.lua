@@ -4,6 +4,14 @@ require("nvim-treesitter.configs").setup({
     highlight = { enable = true }, -- Enable syntax highlighting using the parsers listed above.
     indent = { enable = true }, -- Indent source code using Treesitter!
     incremental_selection = { enable = true }, -- Not sure how it works & why!
+    rainbow = { -- Enable treesitter-based bracket pair coloriser.
+        enable = true,
+        extended_mode = true,
+        max_file_lines = 1000
+    },
+    autotag = { -- Enable Treesitter-based HTML tags.
+        enable = true,
+    },
     refactor = {
         highlight_definitions = { enable = true }, -- Highlight the definition of a function, class & such.
         navigation = {
