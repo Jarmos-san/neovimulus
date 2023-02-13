@@ -23,3 +23,4 @@ vim.opt.expandtab = true -- Insert appropriate number of Spaces when a <Tab> is 
 vim.opt.smarttab = true -- Insert Spaces when a <Tab> is pressed.
 vim.opt.breakindent = true -- Wrap every line with proper indents.
 vim.opt.backspace = { "start", "eol", "indent" } -- Perform appropriate actions when <Backspace> is pressed.
+vim.opt.laststatus = 3 -- Enable the "global statusline".
