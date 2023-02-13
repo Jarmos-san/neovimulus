@@ -9,3 +9,6 @@ map("n", "<C-s>", "<CMD>write<CR>") -- Press "Ctrl + s" to write the current buf
 map("n", "<C-a>", "ggVG") -- Select everything in the buffer like in VSCode (press "Ctrl + a").
 map("n", "<Leader>fe", "<CMD>Neotree toggle<CR>", opts) -- Open the file explorer by pressing "Space + f + e".
 map("n", "<Leader>bd", "<CMD>bdelete<CR>", opts) -- Delete an open buffer.
+
+-- TODO: Move the following keybinding elsewhere after installing the "which-key" plugin.
+map("n", "<Leader>fe", "<CMD>Neotree toggle<CR>", opts) -- Toggle the NeoTree file explorer either open/close.
