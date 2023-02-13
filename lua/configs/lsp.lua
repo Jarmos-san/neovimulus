@@ -4,4 +4,4 @@ vim.lsp.set_log_level("debug") -- This is necessary for the "nvim-lspconfig" plu
 
 -- FIXME: Doesn't work for now.
 -- lspconfig["lua-language-server"].setup({})
-lspconfig["sumneko_lua"].setup({})
+lspconfig["lua_ls"].setup({})
