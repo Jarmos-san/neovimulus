@@ -111,4 +111,56 @@ return {
         end,
 
     },
+
+    {
+        -- Plugin for more easily commenting out blocks of code.
+        "numToStr/Comment.nvim",
+        event = "BufReadPost", -- Load the plugin only after the buffer is read.
+        config = true, -- Setup the plugin for it to be initialised & work.
+    },
+
+    {
+        -- Plugin for automatically inserting bracket pairs & much more.
+        "windwp/nvim-autopairs",
+        event = "InsertEnter", -- Load the plugin only when entering Insert mode.
+        config = true, -- Setup the plugin to be initialised & work as expected.
+    },
+
+    {
+        -- Plugin for properly visualising the indent lines & much more.
+        "lukas-reineke/indent-blankline.nvim",
+        event = "BufReadPost", -- Load the plugin only the buffer is read.
+        config = true -- Configurations for the plugin.
+    },
+
+    {
+        -- Plugin for a custom & pretty-looking statusline.
+        "nvim-lualine/lualine.nvim",
+        event = "UIEnter", -- Load the plugin only after Neovim's UI has loaded.
+        config = true, -- Configurations for the plugin.
+    },
+
+    {
+        -- Plugin for easy-to-use & manage file explorer.
+        "nvim-neo-tree/neo-tree.nvim",
+        cmd = "Neotree", -- Command which calls the plugin lazily.
+        config = function()
+            require("configs.neo-tree") -- Configuration module for the plugin.
+        end,
+        dependencies = { -- Dependencies for the plugin which provides async, Nerd Font icons & a nice UI support.
+            "nvim-lua/plenary.nvim",
+            "kyazdani42/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
+    },
+
+    {
+        -- Plugin for a better more useful dashboard than the default one.
+        "goolord/alpha-nvim",
+        disable = true, -- Disable it temporarily for now (need to customise the dashboard before it can work properly)
+        event = "UIEnter", -- Load the plugin when the UI is loaded first.
+        dependencies = {
+            "kyazdani42/nvim-web-devicons" -- Extra plugin which "alpha.nvim" relies on for the icon support.
+        }
+    },
 }
