@@ -3,7 +3,7 @@ local onedark = require("onedark")
 
 -- Configure the OneDark colorscheme to be dark enough for my eyes.
 onedark.setup({
-    style = "darker",
+    style = "deep",
 })
 
 -- Load the colorscheme which is similar to running the -
