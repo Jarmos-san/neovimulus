@@ -130,14 +130,18 @@ return {
         -- Plugin for properly visualising the indent lines & much more.
         "lukas-reineke/indent-blankline.nvim",
         event = "BufReadPost", -- Load the plugin only the buffer is read.
-        config = true -- Configurations for the plugin.
+        config = function()
+            require("configs.indent-blankline") -- Configuration module for the plugin.
+        end,
     },
 
     {
         -- Plugin for a custom & pretty-looking statusline.
         "nvim-lualine/lualine.nvim",
         event = "UIEnter", -- Load the plugin only after Neovim's UI has loaded.
-        config = true, -- Configurations for the plugin.
+        config = function()
+            require("configs.lualine") -- Configuration module for the plugin.
+        end,
     },
 
     {
@@ -157,10 +161,60 @@ return {
     {
         -- Plugin for a better more useful dashboard than the default one.
         "goolord/alpha-nvim",
-        disable = true, -- Disable it temporarily for now (need to customise the dashboard before it can work properly)
         event = "UIEnter", -- Load the plugin when the UI is loaded first.
+        config = function()
+            require("configs.alpha") -- Configuration module for the "alpha.nvim" plugin.
+        end,
         dependencies = {
             "kyazdani42/nvim-web-devicons" -- Extra plugin which "alpha.nvim" relies on for the icon support.
         }
+    },
+
+    {
+        "famiu/bufdelete.nvim",
+        disable = true, -- FIXME: Doesn't work for now.
+        cmd = "BDelete",
+        config = function()
+            require("bufdelete").bufdelete(0, true)
+        end,
+    },
+
+    {
+        "folke/which-key.nvim", -- Plugin for easier maintainance of keybindings.
+        event = "BufReadPost", -- Load the plugin only after the contents of the buffer is read.
+        config = function()
+            require("configs.which-key") -- Configuraiont module for the plugin.
+        end,
+    },
+
+    {
+        "norcalli/nvim-colorizer.lua", -- Plugin to display the colours of their respective hex codes.
+        ft = { "scss", "css", "javascript", "typescriptreact", "html" }, -- Specific filetypes to load this plugin for.
+        config = true, -- Initializes the plugin for usage within Neovim.
+    },
+
+    {
+        "b0o/schemastore.nvim", -- Plugin to load JSON schemas.
+        ft = "json", -- Load the plugin only for JSON files.
+    },
+
+    {
+        "karb94/neoscroll.nvim", -- Plugin for smooth scrolling across a buffer.
+        event = "BufReadPost", -- Load plugin only after the contents of the buffer are read
+        config = true, -- Initialise the plugin for usage within Neovim.
+    },
+
+    {
+        "roobert/search-replace.nvim", -- Plugin for search & replace capabilities.
+        event = "BufReadPost", -- Load the plugin only after the contents of the buffer are read.
+        config = function()
+            require("configs.search-replace") -- Configuration module for the plugin.
+        end,
+    },
+
+    {
+        "lukas-reineke/virt-column.nvim", -- Load a pretty colourful virtual column for the buffer.
+        event = "BufReadPost", -- Load the plugin only after the contents of the buffer are loaded.
+        config = true -- Initialise the plugin for usage within Neovim.
     },
 }
