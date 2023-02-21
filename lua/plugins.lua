@@ -215,8 +215,20 @@ return {
     },
 
     {
-        "lukas-reineke/virt-column.nvim", -- Load a pretty colourful virtual column for the buffer.
-        event = "BufReadPost", -- Load the plugin only after the contents of the buffer are loaded.
-        config = true -- Initialise the plugin for usage within Neovim.
+        -- Plugin for a better colorcolumn, this replaces the need for using filetype-based plugin config.
+        "m4xshen/smartcolumn.nvim", 
+        event = "FileType", -- Load the plugin only when the filetype of the buffer is recognised.
+        config = function()
+            require("smartcolumn").setup({
+                disabled_filetypes = { "help", "text", "markdown", "alpha" },
+                custom_colorcolumn = { lua = 120 }, -- Configure the character length at which to show the colorcolumn.
+            })
+        end,
+    },
+
+    {
+        "max397574/better-escape.nvim", -- Plugin for a better & quicker "Escape" mechanism.
+        event = "BufReadPost", -- TODO: Figure out an event to load the plugin even later.
+        config = true,
     },
 }
