@@ -29,7 +29,7 @@ return {
     {
         -- Official plugin for more ease in configuring the in-built LSP client.
         "neovim/nvim-lspconfig",
-        event = "BufReadPost", -- Lazy-load the plugin only after the Neovim UI is loaded.
+        -- event = "BufReadPost", -- Lazy-load the plugin only after the Neovim UI is loaded.
         config = function() -- Configurations for the many LSP servers used within Neovim.
             require("configs.lsp")
         end,
@@ -161,7 +161,9 @@ return {
     {
         -- Plugin for a better more useful dashboard than the default one.
         "goolord/alpha-nvim",
-        event = "UIEnter", -- Load the plugin when the UI is loaded first.
+        -- event = "UIEnter", -- Load the plugin when the UI is loaded first.
+        lazy = false,
+        priority = 1000,
         config = function()
             require("configs.alpha") -- Configuration module for the "alpha.nvim" plugin.
         end,
