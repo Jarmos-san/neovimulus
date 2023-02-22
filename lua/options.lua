@@ -26,3 +26,4 @@ vim.opt.backspace = { "start", "eol", "indent" } -- Perform appropriate actions 
 vim.opt.laststatus = 3 -- Enable the "global statusline".
 vim.opt.completeopt = { "menu", "menuone", "noselect" } -- Configuration for better usage of the autocompletion menu.
 vim.opt.clipboard = "unnamedplus" -- Seamless copy-paste across the system & Neovim buffers.
+vim.opt.termguicolors = true -- Required for the "noice.nvim" plugin to work properly
