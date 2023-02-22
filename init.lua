@@ -27,27 +27,27 @@ vim.g.loaded_node_provider = 0
 
 -- Install the necessary plugins through "lazy.nvim"
 require("lazy").setup("plugins", {
-    defaults = { lazy = true, }, -- Make all plugins to be lazy-loaded.
-    ui = {
-        border = "rounded", -- Enable rounded borders for the "lazy.nvim" UI.
+  defaults = { lazy = true }, -- Make all plugins to be lazy-loaded.
+  ui = {
+    border = "rounded", -- Enable rounded borders for the "lazy.nvim" UI.
+  },
+  performance = {
+    rtp = {
+      disabled_plugins = { -- Disable certain in-built plugins which are useful af.
+        "gzip",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+        "rplugin",
+        "man",
+        "spellfile",
+      },
     },
-    performance = {
-        rtp = {
-            disabled_plugins = { -- Disable certain in-built plugins which are useful af.
-                "gzip",
-                "matchit",
-                "matchparen",
-                "netrwPlugin",
-                "tarPlugin",
-                "tohtml",
-                "tutor",
-                "zipPlugin",
-                "rplugin",
-                "man",
-                "spellfile",
-            },
-        },
-    },
+  },
 })
 
 -- Load the necessary user-defined Lua modules here for customising Neovim.
