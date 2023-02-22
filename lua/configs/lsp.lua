@@ -1,4 +1,5 @@
 local lspconfig = require("lspconfig")
+local notify = require("notify") -- Make Neovim use the prettier UI plugin
 
 vim.opt.updatetime = 250 -- Make Neovim to display the diagnostic hover window as fast as possible.
 vim.lsp.set_log_level("debug") -- This is necessary for the "nvim-lspconfig" plugin to report proper debug messages
@@ -51,4 +52,25 @@ lspconfig["lua_ls"].setup({
             telemetry = { enable = false },
         },
     },
+})
+
+lspconfig["jsonls"].setup({
+    on_attach = on_attach,
+    capabilties = capabilities,
+    settings = {
+        json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true },
+        },
+    },
+})
+
+lspconfig["yamlls"].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        yaml = {
+            schemas = { ["https://json.schemastore.org/github-action.json"] = ".github/workflows/*" }
+        }
+    }
 })
