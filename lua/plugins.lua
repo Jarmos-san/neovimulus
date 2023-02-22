@@ -58,7 +58,6 @@ return {
         dependencies = { -- A bunch of extra extensions for the autocompletions plugin.
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-nvim-lsp",
-            "onsails/lspkind.nvim",
             "hrsh7th/cmp-nvim-lsp-signature-help",
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-nvim-lua",

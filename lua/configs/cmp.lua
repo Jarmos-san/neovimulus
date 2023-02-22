@@ -15,7 +15,44 @@ local has_words_before = function()
     return col ~= 0 and vim.api.nvim_get_buf_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+local lspkind_icons = {
+    Text = "",
+    Method = "",
+    Function = "",
+    Constructor = "",
+    Field = "",
+    Variable = "",
+    Class = "ﴯ",
+    Interface = "",
+    Module = "",
+    Property = "ﰠ",
+    Unit = "",
+    Value = "",
+    Enum = "",
+    Keyword = "",
+    Snippet = "",
+    Color = "",
+    File = "",
+    Reference = "",
+    Folder = "",
+    EnumMember = "",
+    Constant = "",
+    Struct = "",
+    Event = "",
+    Operator = "",
+    TypeParameter = "",
+}
+
 cmp.setup({
+    enabled = function()
+        local context = require("cmp.config.context")
+
+        if vim.api.nvim_get_mode().mode == "c" then
+            return true
+        else
+            return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
+        end
+    end,
     preselect = cmp.PreselectMode.Item,
     sorting = {
         comparators = {
@@ -34,22 +71,20 @@ cmp.setup({
         end,
     },
     window = {
-        completion = {
-            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-            col_offset = -3,
-            side_padding = 0
-        },
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
     },
     formatting = {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
-            local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = "50" })(entry, vim_item)
-            local strings = vim.split(kind.kind, "%s", { trimempty = true })
-
-            kind.kind = " " .. strings[1] .. " "
-            kind.menu = "   (" .. strings[2] .. ")"
-
-            return kind
+            vim_item.kind = string.format("%s %s", lspkind_icons[vim_item.kind], vim_item.kind)
+            vim_item.menu = ({
+                buffer = "[Buffer]",
+                nvim_lsp = "[LSP]",
+                luasnip = "[Snippet]",
+                nvim_lua = "[Neovim]",
+            })[entry.source.name]
+            return vim_item
         end,
     },
 
@@ -58,8 +93,8 @@ cmp.setup({
         ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
         ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
         ["<C-y>"] = cmp.config.disable,
-        ["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
-        ["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+        ["<C-e>"] = cmp.mapping.abort(),
+        ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
