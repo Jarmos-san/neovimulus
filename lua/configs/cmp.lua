@@ -1,7 +1,8 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
-require("cmp_luasnip_choice").setup({ auto_open = true })
+-- FIXME: Not sure what it exactly does.
+-- require("cmp_luasnip_choice").setup({ auto_open = true })
 
 luasnip.setup({
     region_check_events = "InsertEnter",
@@ -124,6 +125,7 @@ cmp.setup({
         { name = "luasnip" },
         { name = "nvim_lua" },
         { name = "path" },
+        { name = "buffer" }
     },
 })
 
@@ -142,3 +144,10 @@ cmp.setup.cmdline(":", {
         { name = "cmdline" },
     }),
 })
+
+-- Disable certain capabilities when working on Markdown files.
+cmp.setup.filetype({ "markdown" }, { sources = { name = "buffer"} })
+
+-- FIXME: Doesn't work for now
+-- Add a pair of brackets after entering the completion value.
+-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
