@@ -33,6 +33,10 @@ return {
         config = function() -- Configurations for the many LSP servers used within Neovim.
             require("configs.lsp")
         end,
+        dependencies = {
+            -- This plugin needs to be loaded as well otherwise Neovim can't find the LSP binary on $PATH. 
+            "williamboman/mason.nvim"
+        }
     },
 
     {
@@ -99,14 +103,16 @@ return {
     {
         -- Plugin for using the builtin LSP client to hook into other non-LSP tools like Prettier & ESLint.
         "jose-elias-alvarez/null-ls.nvim",
-        disable = true, -- FIXME: Disable plugin temporarily until its fixed.
+        -- lazy = false,
+        -- disable = true, -- FIXME: Disable plugin temporarily until its fixed.
         event = "BufReadPost", -- Load the plugin only when the buffer is read & filetype is known.
         dependencies = { -- Load some necessary dependencies for the plugin.
             "nvim-lua/plenary.nvim",
             "neovim/nvim-lspconfig",
+            "williamboman/mason.nvim"
         },
         config = function() -- Configuration module for the plugin.
-            -- require("configs.null-ls")
+            require("configs.null-ls")
         end,
 
     },
@@ -143,19 +149,19 @@ return {
         end,
     },
 
-    {
-        -- Plugin for easy-to-use & manage file explorer.
-        "nvim-neo-tree/neo-tree.nvim",
-        cmd = "Neotree", -- Command which calls the plugin lazily.
-        config = function()
-            require("configs.neo-tree") -- Configuration module for the plugin.
-        end,
-        dependencies = { -- Dependencies for the plugin which provides async, Nerd Font icons & a nice UI support.
-            "nvim-lua/plenary.nvim",
-            "kyazdani42/nvim-web-devicons",
-            "MunifTanjim/nui.nvim",
-        },
-    },
+    -- {
+    --     -- Plugin for easy-to-use & manage file explorer.
+    --     "nvim-neo-tree/neo-tree.nvim",
+    --     cmd = "Neotree", -- Command which calls the plugin lazily.
+    --     config = function()
+    --         require("configs.neo-tree") -- Configuration module for the plugin.
+    --     end,
+    --     dependencies = { -- Dependencies for the plugin which provides async, Nerd Font icons & a nice UI support.
+    --         "nvim-lua/plenary.nvim",
+    --         "kyazdani42/nvim-web-devicons",
+    --         "MunifTanjim/nui.nvim",
+    --     },
+    -- },
 
     {
         -- Plugin for a better more useful dashboard than the default one.
@@ -171,22 +177,22 @@ return {
         }
     },
 
-    {
-        "famiu/bufdelete.nvim",
-        disable = true, -- FIXME: Doesn't work for now.
-        cmd = "BDelete",
-        config = function()
-            require("bufdelete").bufdelete(0, true)
-        end,
-    },
+    -- {
+    --     "famiu/bufdelete.nvim",
+    --     disable = true, -- FIXME: Doesn't work for now.
+    --     cmd = "BDelete",
+    --     config = function()
+    --         require("bufdelete").bufdelete(0, true)
+    --     end,
+    -- },
 
-    {
-        "folke/which-key.nvim", -- Plugin for easier maintainance of keybindings.
-        event = "BufReadPost", -- Load the plugin only after the contents of the buffer is read.
-        config = function()
-            require("configs.which-key") -- Configuraiont module for the plugin.
-        end,
-    },
+    -- {
+    --     "folke/which-key.nvim", -- Plugin for easier maintainance of keybindings.
+    --     event = "BufReadPost", -- Load the plugin only after the contents of the buffer is read.
+    --     config = function()
+    --         require("configs.which-key") -- Configuraiont module for the plugin.
+    --     end,
+    -- },
 
     {
         "norcalli/nvim-colorizer.lua", -- Plugin to display the colours of their respective hex codes.
