@@ -53,7 +53,6 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protoc
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- FIXME: Doesn't work for now.
 lspconfig["lua_ls"].setup({
     on_attach = on_attach,
     capabilities = capabilities,
