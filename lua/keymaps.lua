@@ -66,3 +66,11 @@ map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "Open a new file" })
 
 -- Toggle open/close the terminal plugin
 map("n", "<leader>tt", "<cmd>ToggleTerm toggle<cr>", { desc = "Toggle the terminal open/close" })
+
+-- Press "Space + b + d" to quickly delete & remove the current buffer
+map(
+  "n",
+  "<leader>bd",
+  "<cmd>lua require('bufdelete').bufdelete(o, true)<cr>",
+  { desc = "Delete & remove the current buffer forcibly" }
+)
