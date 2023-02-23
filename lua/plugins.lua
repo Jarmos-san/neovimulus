@@ -9,26 +9,6 @@ return {
   },
 
   {
-    -- Plugin for better & faster syntax highlighting using the Rust-based project, Treesitter.
-    "nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPost", "BufNewFile" }, -- Load the plugin after a buffer is created/read.
-    dependencies = { -- A couple of more "extensions" which works well with the plugin.
-      "nvim-treesitter/nvim-treesitter-refactor", -- Rename stuff with the power of Treesitter!
-      "JoosepAlviste/nvim-ts-context-commentstring", -- Plugin for better commenting on JSX/TSX files.
-      "mrjones2014/nvim-ts-rainbow", -- Extension of bracket colours.
-      "windwp/nvim-ts-autotag", -- Extension for automatic HTML tag completion.
-      "nvim-treesitter/nvim-treesitter-textobjects", -- Navigate around code blocks more easily with this extension.
-      "nvim-treesitter/playground", -- Extension for visualising the Treesitter nodes & graph.
-    },
-    build = function() -- Update all the parsers when the plugin is updated/installed.
-      require("nvim-treesitter.install").update({ with_sync = true })
-    end,
-    config = function() -- Configuration for the plugin.
-      require("configs.treesitter")
-    end,
-  },
-
-  {
     -- Official plugin for more ease in configuring the in-built LSP client.
     "neovim/nvim-lspconfig",
     -- event = "BufReadPost", -- Lazy-load the plugin only after the Neovim UI is loaded.
@@ -147,20 +127,6 @@ return {
       require("configs.lualine") -- Configuration module for the plugin.
     end,
   },
-
-  -- {
-  --     -- Plugin for easy-to-use & manage file explorer.
-  --     "nvim-neo-tree/neo-tree.nvim",
-  --     cmd = "Neotree", -- Command which calls the plugin lazily.
-  --     config = function()
-  --         require("configs.neo-tree") -- Configuration module for the plugin.
-  --     end,
-  --     dependencies = { -- Dependencies for the plugin which provides async, Nerd Font icons & a nice UI support.
-  --         "nvim-lua/plenary.nvim",
-  --         "kyazdani42/nvim-web-devicons",
-  --         "MunifTanjim/nui.nvim",
-  --     },
-  -- },
 
   {
     -- Plugin for a better more useful dashboard than the default one.
