@@ -37,7 +37,7 @@ return {
     event = "FileType", -- Load the plugin only when the filetype of the buffer is recognised.
     opts = {
       -- Disable the colorcolum in certain filetypes like Vim help files.
-      disabled_filetypes = { "help", "text", "markdown", "alpha" },
+      disabled_filetypes = { "help", "text", "markdown", "alpha", "checkhealth" },
       custom_colorcolumn = { lua = 120 }, -- Configure the character length at which to show the colorcolumn.
     },
   },
@@ -74,7 +74,7 @@ return {
 
   {
     "roobert/search-replace.nvim",
-    config = function ()
+    config = function()
       require("search-replace").setup({
         default_replace_single_buffer_options = "gcI",
         default_replace_multi_buffer_options = "egcI",
