@@ -119,29 +119,6 @@ return {
     end,
   },
 
-  {
-    -- Plugin for a custom & pretty-looking statusline.
-    "nvim-lualine/lualine.nvim",
-    event = "UIEnter", -- Load the plugin only after Neovim's UI has loaded.
-    config = function()
-      require("configs.lualine") -- Configuration module for the plugin.
-    end,
-  },
-
-  {
-    -- Plugin for a better more useful dashboard than the default one.
-    "goolord/alpha-nvim",
-    -- event = "UIEnter", -- Load the plugin when the UI is loaded first.
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("configs.alpha") -- Configuration module for the "alpha.nvim" plugin.
-    end,
-    dependencies = {
-      "kyazdani42/nvim-web-devicons", -- Extra plugin which "alpha.nvim" relies on for the icon support.
-    },
-  },
-
   -- {
   --     "famiu/bufdelete.nvim",
   --     disable = true, -- FIXME: Doesn't work for now.
