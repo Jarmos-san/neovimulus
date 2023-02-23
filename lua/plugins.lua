@@ -1,12 +1,4 @@
 return {
-  {
-    -- A pretty colorscheme inspired from the now defunct Atom editor.
-    "navarasu/onedark.nvim",
-    event = "UIEnter", -- Load the colorscheme immediately after startup to avoid unexpected behaviours.
-    config = function() -- Configuration for the colorscheme.
-      require("configs.colorscheme")
-    end,
-  },
 
   {
     -- Official plugin for more ease in configuring the in-built LSP client.
