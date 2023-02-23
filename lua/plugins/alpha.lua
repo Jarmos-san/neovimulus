@@ -6,10 +6,11 @@ return {
       local dashboard = require("alpha.themes.dashboard")
 
       dashboard.section.buttons.val = {
-        dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
-        dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
-        dashboard.button("l", "鈴" .. " Lazy", ":Lazy<CR>"),
-        dashboard.button("q", " " .. " Quit", ":qa<CR>"),
+        dashboard.button("n", " " .. " Create & Open a New File", ":ene <BAR> startinsert <CR>"),
+        dashboard.button("n", " " .. " Open the File Explorer", "<CMD>Neotree toggle<CR>"),
+        dashboard.button("c", " " .. " Configure Local Neovim environment", ":e $MYVIMRC <CR>"),
+        dashboard.button("l", "鈴" .. " Open the Lazy Dashboard", ":Lazy<CR>"),
+        dashboard.button("q", " " .. " Quit Out of Neovim", ":qa<CR>"),
       }
 
       for _, button in ipairs(dashboard.section.buttons.val) do
