@@ -21,6 +21,7 @@ return {
       transparent = true,
       lualine = { transparent = true },
     },
+    events = "VimEnter",
   },
 
   {
