@@ -1,6 +1,6 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = function(name)
-    return vim.api.nvim_create_augroup("augroup" .. name, { clear = true })
+  return vim.api.nvim_create_augroup("augroup" .. name, { clear = true })
 end
 
 autocmd("TextYankPost", {
@@ -63,9 +63,9 @@ autocmd("User", {
 })
 
 autocmd("User", {
-  desc = "Open the Alpha dashboard when the last buffer is closed instead of an empty buffer",
-  group = augroup("alpha_on_empty"),
-  pattern = "BDeletePre*",
+  desc = "Open Alpha dashboard when all buffers are removed",
+  group = augroup("open_alpha_on_buffer_removal"),
+  pattern = "BDeletePost*",
   callback = function(event)
     local fallback_name = vim.api.nvim_buf_get_name(event.buf)
     local fallback_filetype = vim.api.nvim_buf_get_option(event.buf, "filetype")
@@ -80,19 +80,19 @@ autocmd("User", {
 })
 
 autocmd("VimResized", {
-    desc = "Resize the splits if the window is resized",
-    group = augroup("resize_splits"),
-    callback= function()
-        vim.cmd("tabdo wincmd =")
-    end
+  desc = "Resize the splits if the window is resized",
+  group = augroup("resize_splits"),
+  callback = function()
+    vim.cmd("tabdo wincmd =")
+  end,
 })
 
 autocmd("FileType", {
-    desc = "Close some filtypes simply by pressing 'q'",
-    group = augroup("close_with_q"),
-    pattern = { "qf", "help", "man", "notify", "lspinfo", "tsplayground" },
-    callback = function(event)
-        vim.bo[event.buf].buflisted = false
-        vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
-    end
+  desc = "Close some filtypes simply by pressing 'q'",
+  group = augroup("close_with_q"),
+  pattern = { "qf", "help", "man", "notify", "lspinfo", "tsplayground" },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+  end,
 })
