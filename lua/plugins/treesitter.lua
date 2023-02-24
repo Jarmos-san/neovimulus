@@ -1,7 +1,9 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter", -- Plugin for better syntax highlighting & much more!
-    build = "TSUpdate", -- Command to invoke after installing the plugin.
+    build = function() -- Command to invoke after installing the plugin.
+      require("nvim-treesitter.install").update({ with_sync = true })
+    end,
     event = { "BufReadPost", "BufNewFile" }, -- Lazy-load the plugin only on certain events
     dependencies = {
       "nvim-treesitter/nvim-treesitter-refactor", -- Rename stuff with the power of Treesitter!
