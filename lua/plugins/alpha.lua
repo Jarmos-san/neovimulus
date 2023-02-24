@@ -1,3 +1,5 @@
+-- Module for configuring the "alpha.nvim" dashboard plugin
+
 return {
   {
     "goolord/alpha-nvim",
