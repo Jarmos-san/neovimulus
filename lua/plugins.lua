@@ -89,18 +89,6 @@ return {
   },
 
   {
-    "rcarriga/nvim-notify", -- A plugin which makes the Neovim UI prettier & more modern.
-    config = true,
-  },
-
-  {
-    "folke/trouble.nvim",
-    config = true,
-    dependencies = { "kyazdani42/nvim-web-devicons" },
-    cmd = { "Trouble" },
-  },
-
-  {
     "folke/noice.nvim",
     config = true,
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
