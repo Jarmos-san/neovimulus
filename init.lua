@@ -54,3 +54,5 @@ require("lazy").setup("plugins", {
 require("options")
 require("autocmds")
 require("keymaps")
+
+vim.cmd([[ colorscheme onedark ]])
