@@ -1,23 +1,8 @@
+-- Module for configuring some utilitarian plugins
+
 return {
   {
     "famiu/bufdelete.nvim", -- Plugin for deleting & removing buffers without messing up the window layout
-  },
-
-  {
-    "echasnovski/mini.comment", -- Plugin for easier commenting across source code
-    event = "VeryLazy", -- Not sure what this event is about but it works any way!
-    opts = {
-      hooks = {
-        pre = function()
-          -- Necessary hook for commenting source code based on Treesitter queries.
-          require("ts_context_commentstring.internal").update_commentstring({})
-        end,
-      },
-    },
-    config = function(_, opts)
-      -- Initialise the plugin for usage across buffers.
-      require("mini.comment").setup(opts)
-    end,
   },
 
   {
@@ -60,12 +45,6 @@ return {
   },
 
   {
-    "windwp/nvim-autopairs", -- Plugin for automatically inserting bracket pairs
-    event = "InsertEnter", -- Load the plugin only when entering Insert mode.
-    config = true, -- Setup the plugin to be initialised & work as expected.
-  },
-
-  {
     "chrisgrieser/nvim-various-textobjs", -- Plugin which provides some extra keybinds for easier navigation
     config = function()
       require("various-textobjs").setup({ useDefaultKeymaps = true }) -- use plugin provided default inbuilt keymaps
@@ -73,12 +52,18 @@ return {
   },
 
   {
-    "roobert/search-replace.nvim",
-    config = function()
-      require("search-replace").setup({
-        default_replace_single_buffer_options = "gcI",
-        default_replace_multi_buffer_options = "egcI",
-      })
+    "roobert/search-replace.nvim", -- Utilitarian plugin for better & easier search & replace capabilities
+    opts = {
+      default_replace_single_buffer_options = "gcI",
+      default_replace_multi_buffer_options = "egcI",
+    },
+    config = function(opts)
+      require("search-replace").setup(opts)
     end,
+  },
+
+  {
+    "rcarriga/nvim-notify", -- A plugin which makes the Neovim UI prettier & more modern.
+    config = true, -- Initialise the plugin with default configurations
   },
 }

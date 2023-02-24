@@ -1,3 +1,5 @@
+-- Module for configuring the file explorer based on the "neo-tree.nvim" plugin
+
 return {
   {
     "nvim-neo-tree/neo-tree.nvim", -- Plugin to manage & access the file system using an explorer

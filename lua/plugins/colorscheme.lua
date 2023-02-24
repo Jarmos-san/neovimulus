@@ -1,3 +1,5 @@
+-- Module for installing & configuring some colorschemes
+
 return {
   {
     "folke/tokyonight.nvim",

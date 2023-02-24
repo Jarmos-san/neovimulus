@@ -1,3 +1,5 @@
+-- Module for configuring the in-built Treesitter capabilities
+
 return {
   {
     "nvim-treesitter/nvim-treesitter", -- Plugin for better syntax highlighting & much more!

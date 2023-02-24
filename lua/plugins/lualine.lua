@@ -1,3 +1,5 @@
+-- Module for configuring the statusline with the "lualine.nvim" plugin
+
 return {
   {
     "nvim-lualine/lualine.nvim",
