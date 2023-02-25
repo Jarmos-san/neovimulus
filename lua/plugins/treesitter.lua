@@ -17,7 +17,7 @@ return {
     },
     opts = {
       -- Ensure the parsers for these languages are compulsarily installed
-      ensure_installed = { "bash", "lua", "help", "json", "vim", "comment" },
+      ensure_installed = { "bash", "lua", "help", "json", "vim", "comment", "regex", "markdown", "markdown_inline" },
       highlight = { enable = true }, -- Enable syntax highlighting using the Treesitter parsers
       indent = { enable = true }, -- Enable Treesitter-based indentation
       context_commentstring = { enable = true, enable_autocmd = false }, -- Enable easier commenting using Treesitter
