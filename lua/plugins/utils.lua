@@ -44,24 +44,4 @@ return {
       require("search-replace").setup(opts)
     end,
   },
-
-  { "rcarriga/nvim-notify" }, -- Plugin for showing nice popup UI, can be used in conjunction with LSP & others
-
-  {
-    "lewis6991/gitsigns.nvim", -- Plugin for quickly visualising Git VCS info right within the buffer
-    -- Conditionally load this plugin only if the current working directory is a local Git repo
-    cond = function()
-      if
-        not vim.loop.fs_stat(vim.loop.cwd() .. "./git") -- Check if the current directory has the ".git" folder
-        -- Additionally, double-check with Git to see if the local repo IS actually a Git repo
-        and vim.fn.system({ "git", "rev-parse", "--show-level", "2>", "/dev/null" })
-      then
-        -- If both the conditions mentioned above fail, then return "false" for Lazy to not load the plugin
-        return false
-      end
-    end,
-  },
-
-  -- Plugin to change the look & feel of the base Neovim UI & make it look "modern"
-  { "folke/noice.nvim", dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" } },
 }
