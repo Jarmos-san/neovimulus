@@ -9,7 +9,7 @@ return {
         theme = "auto",
         globalstatus = true,
         disabled_filetypes = {
-          statusline = { "dashboard", "lazy", "alpha" },
+          statusline = { "filesytem", "neo-tree", "dashboard", "lazy", "alpha" },
         },
       },
     },

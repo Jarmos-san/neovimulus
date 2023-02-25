@@ -29,9 +29,18 @@ return {
   {
     "echasnovski/mini.indentscope", -- Plugin to visualise & animate indent lines
     event = "BufReadPost", -- Lazy load the plugin only after the buffer is read
-    -- TODO: Configure plugin to not show indents in help files
-    -- Refer to this thread - https://vi.stackexchange.com/a/27898
-    -- enabled = function() end,
+    -- Configure plugin to not show indents in help files
+    cond = function()
+      if
+        -- Check if the ".git" folder exists, else short-circuit the conditional
+        not vim.loop.fs_stat(vim.loop.cwd() .. "./git")
+        -- Additional check: Invoke Git to check if the current directory IS an actual local git repo
+        and vim.fn.system({ "git", "rev-parse", "--show-toplevel", "2>", "/dev/null" })
+      then
+        -- If the above conditional fails, return "false" for Lazy to understand when not to load the plugin
+        return false
+      end
+    end,
     config = function()
       require("mini.indentscope").setup({
         -- Disable the animation of the indent line visualisation
