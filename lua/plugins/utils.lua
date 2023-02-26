@@ -38,16 +38,4 @@ return {
       require("various-textobjs").setup({ useDefaultKeymaps = true }) -- use plugin provided default inbuilt keymaps
     end,
   },
-
-  {
-    -- FIXME: Not sure if it even works!
-    "roobert/search-replace.nvim", -- Utilitarian plugin for better & easier search & replace capabilities
-    opts = {
-      default_replace_single_buffer_options = "gcI",
-      default_replace_multi_buffer_options = "egcI",
-    },
-    config = function(opts)
-      require("search-replace").setup(opts)
-    end,
-  },
 }
