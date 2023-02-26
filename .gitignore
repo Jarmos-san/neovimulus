@@ -103,5 +103,4 @@ tags
 
 # End of https://www.toptal.com/developers/gitignore/api/lua,vim,text,visualstudiocode
 
-!**/after/plugin/**/*.lua
-**/plugin/packer_compiled.lua
+**/.luarc.json
