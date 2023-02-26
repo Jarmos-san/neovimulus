@@ -15,7 +15,7 @@ return {
   },
 
   {
-    "navarasu/onedark.nvim",
+    "navarasu/onedark.nvim", -- The default colorscheme used right now
     name = "onedark",
     lazy = true,
     opts = {
