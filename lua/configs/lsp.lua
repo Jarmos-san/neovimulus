@@ -59,6 +59,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protoc
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+-- LSP configurations for Lua files
 lspconfig["lua_ls"].setup({
   on_attach = on_attach,
   capabilities = capabilities,
@@ -72,6 +73,7 @@ lspconfig["lua_ls"].setup({
   },
 })
 
+-- LSP configurations for JSON files
 lspconfig["jsonls"].setup({
   on_attach = on_attach,
   capabilties = capabilities,
@@ -83,6 +85,7 @@ lspconfig["jsonls"].setup({
   },
 })
 
+-- LSP configurations for YAML files
 lspconfig["yamlls"].setup({
   on_attach = on_attach,
   capabilities = capabilities,
