@@ -5,7 +5,13 @@ return {
 
   { "max397574/better-escape.nvim", event = "BufReadPost" }, -- Plugin for a better & quicker "Escape" mechanism.
 
-  { "karb94/neoscroll.nvim", event = "BufReadPost" }, -- Plugin to enable a smoother scroll animation
+  {
+    "karb94/neoscroll.nvim", -- Plugin to enable a smoother scroll animation
+    event = "BufReadPost", -- Load the plugin only after the contents of the buffer are read
+    config = function()
+      require("neoscroll").setup() -- Initialising the plugin with default configs is necessary for it work everytime
+    end,
+  },
 
   {
     "m4xshen/smartcolumn.nvim", -- Functionally better plugin for showing a nice colorcolum
