@@ -1,3 +1,6 @@
+-- Module for configuring the autocompletion plugin.
+-- NOTE: The configuration for this plugin is a mess. The docs aren't good either & the source code design is bad.
+-- So either copy + paste the configurations & pray things work or refer to the repository wiki for more information.
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
