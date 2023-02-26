@@ -44,6 +44,7 @@ return {
             ["cmp.entry.get_documentation"] = true,
           },
         },
+        -- These are in-built configurations provided by the plugin itself! See the plugin wiki for information on these
         presets = {
           bottom_search = true,
           command_palette = true,
