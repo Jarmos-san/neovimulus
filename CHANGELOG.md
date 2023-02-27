@@ -16,39 +16,40 @@ unreleased features, check out the `main` branch.
 More changes to the configuration will be listed & documented here as
 necessary.
 
-- Added a file-explorer plugin [`neo-tree`][13] for easier filesystem
-  navigation.
-- Added & configured the [`autopairs`][14] plugin for Treesitter-based
-  automatic brackets insertion.
-- Created a custom keymap to toggle open/close the file explorer more easily.
-- Added & configured the [`Comment.nvim`][15] plugin for easier commenting based
-  on Treesitter parsers.
-- Added some Treesitter modules for better brackets highlighting & much more.
-- Refactored the `Taskfile.yml` to use the [BuildKit][16] backend when building
-  the Docker images.
-- Added the [`lualine`][17] plugin to configure the `statusline`.
-- Added the [`gitsigns`][18] plugin for the version-control features.
-- Added the [`indent-blankline`][19] plugin to visualise whitespace & indents
-  better.
-- Uncommented an autocommand to automatically source the `init.lua` file (but
-  it doesn't work as expected).
-- Configured Neovim settings such that the whitespaces are more visually
-  legible & not cluttered.
-- Refactored some of the older keymaps & added new relevant ones.
-- Configured the `Dockerfile` to download Neovim from GitHub Releases instead.
-- Refactored the LSP configurations to adhere to a deprecation notice.
-- Refactored the `Dockerfile` & the `packer.nvim` configurations to lazy-load the
-  plugin upon invoking a particular set of commands.
-- Pinned a bunch of plugins to a specific versions for increased stability.
-- Introduced a ton of quality-of-life improvements like automating code quality
-  checks & so on.
-- Added & configured `null-ls` to extend the core Neovim capabilities like code
-  actions, diagnostics & so on.
-
 ### Changes to Add Later
 
 Following are some changes/updates which will added to the project at some
 point in time.
+
+## [1.4.0] - 2023-02-27
+
+This release took quite a bit of working to complete!
+
+The [`package.nvim`](https://github.com/wbthomason/packer.nvim) package manager
+is replaced with [`lazy.nvim`](https://github.com/folke/lazy.nvim) instead. And
+in doing so, it resulted in a significant boost in performance (load times &
+general usage). Not to forget, `lazy.nvim` is the brainchild of
+[Folke Lemaitre](https://github.com/folke) who is a reputed member of the Neovim
+community with some **VERY** popular Neovim plugins out there!
+
+That said, this minor release brings the following changes to the project's
+source code:
+
+- Port the plugin management system from `packer.nvim` to `lazy.nvim`.
+- Properly lazy-load every plugin as much as possible & improve the performance
+  to whatever extent possible.
+- Perform a range of UI customization as well which were pending since the last
+  few releases. Some of those changes include removing some unnecessary fluff
+  from the statusline & more.
+- Take full advantage of the `lazy.nvim` package manager to restructure the
+  configuration modules for easier & better maintainability.
+- Rewrite the docs to be more accessible to beginners just starting out with
+  using Neovim, Lua & the corresponding ecosystem.
+
+## [1.3.0] - 2022-10-21
+
+See the [release notes](https://github.com/Jarmos-san/neovim-docker/releases/tag/v1.3.0)
+for more information.
 
 ## [1.2.1] - 2022-10-04
 
