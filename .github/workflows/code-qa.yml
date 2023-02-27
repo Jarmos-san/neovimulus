@@ -6,6 +6,7 @@ on:
 
 jobs:
   format-lua-files:
+    name: Run Pre-Commit Checks
     runs-on: ubuntu-latest
 
     permissions:
@@ -15,14 +16,14 @@ jobs:
       - name: Checkout the Contents of the Repository
         uses: actions/checkout@v3
 
-      - name: Format Lua code using Stylua
-        uses: JohnnyMorganz/stylua-action@v2.0.0
-        with:
-          version: latest
-          token: ${{ secrets.GITHUB_TOKEN }}
-          args: .
+      - name: Setup Python to Install Pre-Commit
+        uses: actions/setup-python@v3
+
+      - name: Perform the Pre-Commit Checks
+        uses: pre-commit/action@v3.0.0
 
   lint-lua-files:
+    name: Run the Selene Linter
     runs-on: ubuntu-latest
 
     permissions:
