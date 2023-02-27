@@ -130,7 +130,7 @@ setting up the development environment.
 
 Before proceeding ahead with your contributions, please read
 the instructions in this section thoroughly. And you'll need to have the
-following tools installed locally on your system to develop the neovim-docker.
+following tools installed locally on your system to develop the neovim-docker. 
 
 - [Docker](https://www.docker.com)
 - [Kitty Terminal](https://sw.kovidgoyal.net/kitty)
