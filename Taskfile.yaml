@@ -46,17 +46,6 @@ tasks:
     cmds:
       - docker system prune --force
 
-  release:
-    desc: Create a public versioned release of the project on GitHub (WIP).
-    summary: |
-      Create a public release on GitHub.
-
-      This Task relies on the GitHub CLI tool to create a draft version of the
-      release on GitHub. For now the task is configured to only create a draft
-      but later will be refactored to have more automation in place.
-    cmds:
-      - gh release create "Release Draft" --generate-notes --draft
-
   build:
     desc: Build the Neovim container's Docker image locally for testing purposes.
     summary: |
