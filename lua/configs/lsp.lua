@@ -12,6 +12,9 @@ vim.diagnostic.config({
   severity_sort = true, -- Configure Neovim to sort the error messages according to the severity.
 })
 
+-- Add rounded borders to the LSP flaoting windows
+require("lspconfig.ui.windows").default_options.border = "rounded"
+
 local on_attach = function(_, bufnr)
   local map = vim.keymap.set
   local opts = { noremap = true, silent = true }
