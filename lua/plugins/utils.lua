@@ -30,7 +30,11 @@ return {
 
   { "b0o/schemastore.nvim", ft = "json" }, -- Plugin to load JSON schemas
 
-  { "akinsho/toggleterm.nvim", cmd = { "ToggleTerm" } }, -- Plugin for a better more accessible terminal
+  {
+    "akinsho/toggleterm.nvim", -- Plugin for a better more accessible terminal
+    event = { "BufReadPost" }, -- Load the plugin after the contents of the buffer are read
+    config = true, -- Initialise the plugin with default values
+  },
 
   {
     "chrisgrieser/nvim-various-textobjs", -- Plugin which provides some extra keybinds for easier navigation
