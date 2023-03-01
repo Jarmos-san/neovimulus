@@ -27,33 +27,4 @@ return {
       end
     end,
   },
-
-  {
-    "folke/noice.nvim", -- Plugin which revamps the base Neovim look & feel completely
-    event = "VimEnter", -- Ensure the plugin is loaded & available right when the UI is accessible
-    config = function()
-      require("noice").setup({
-        cmdline = { view = "cmdline" }, -- Change the look of the commandline
-        lsp = {
-          -- Disable showing the LSP progress messages (doesn't appear to be working though)
-          progress = { enable = false },
-          -- Not exactly what are these overrides for but the documentations recommends using them
-          override = {
-            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true,
-          },
-        },
-        -- These are in-built configurations provided by the plugin itself! See the plugin wiki for information on these
-        presets = {
-          bottom_search = true,
-          command_palette = true,
-          long_message_to_split = true,
-          inc_rename = true,
-          lsp_doc_border = true,
-        },
-      })
-    end,
-    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
-  },
 }
