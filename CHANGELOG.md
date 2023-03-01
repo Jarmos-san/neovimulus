@@ -21,6 +21,20 @@ necessary.
 Following are some changes/updates which will added to the project at some
 point in time.
 
+## 1.4.1 - 2023-03-01
+
+This release contains minor patches & bug fixes. See the contents of this
+release below for more information on those:
+
+- Removed the [`folke/noice.nvim`](https://github.com/folke/noice.nvim) plugin
+  since it was causing issues with Treesitter, Command mode, autocompletion
+  menu & more.
+- Fixed a bug with the terminal not loading when pressing `<Space> + t + t` in
+  quick succcession.
+- Reconfigure the statusline to load the LSP progress since the `noice.nvim`
+  plugin is removed.
+- Add a nice rounded border around the `LspInfo` window.
+
 ## [1.4.0] - 2023-02-27
 
 This release took quite a bit of working to complete!
