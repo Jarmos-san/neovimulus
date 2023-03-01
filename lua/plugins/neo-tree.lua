@@ -38,6 +38,10 @@ return {
         hijack_netrw_behaviour = "open_current", -- Use the plugin instead of the default "netrw" plugin
         bind_to_cwd = false,
         follow_current_file = true,
+        filtered_items = {
+          -- ALWAYS show these files/folders even if by default dotfiles are configured to be hidden
+          always_show = { ".github", ".gitignore", ".gitattributes", ".editorconfig" },
+        },
       },
       window = {
         width = "25", -- Hard-code the size of the window width
