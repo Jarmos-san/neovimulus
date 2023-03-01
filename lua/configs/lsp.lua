@@ -68,10 +68,12 @@ lspconfig["lua_ls"].setup({
   capabilities = capabilities,
   settings = {
     Lua = {
-      runtime = { version = "LuaJIT" },
-      diagnostics = { globals = { "vim" } },
+      runtime = { version = "LuaJIT" }, -- Set the Neovim's embedded Lua runtime for the LSP to recognise
+      -- Disable the LSP provided diagnostics since it shows false-negatives & interferes with Selene
+      diagnostics = { enable = false },
+      -- Configure the LSP to know where & how to look for the Neovim runtime files
       workspace = { library = vim.api.nvim_get_runtime_file("", true) },
-      telemetry = { enable = false },
+      telemetry = { enable = false }, -- Disable telemetry for privacy concerns
     },
   },
 })
