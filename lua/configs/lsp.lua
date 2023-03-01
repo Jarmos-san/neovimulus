@@ -84,7 +84,9 @@ lspconfig["jsonls"].setup({
   capabilties = capabilities,
   settings = {
     json = {
-      schemas = require("schemastore").json.schemas(),
+      schemas = require("schemastore").json.schemas(), -- Load the JSON schemas
+      -- See this issue thread for more information on this needs to be enabled.
+      -- https://github.com/b0o/SchemaStore.nvim/issues/8
       validate = { enable = true },
     },
   },
