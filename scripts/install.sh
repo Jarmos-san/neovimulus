@@ -13,6 +13,53 @@ cleanup() {
 	rm --recursive --force "$TEMP_DIR"
 }
 
+#####################################################################
+# Wrapper function to more easily output an error message to STDERR.
+# Arguments:
+#   The message to echo to STDERR.
+# Outputs:
+#   An ANSI colour code formatted message to print to STDERR based on
+#   the message which is passed to the function as a parameter.
+#####################################################################
+function error() {
+	# TODO: Echo an error message to STDERR
+	echo "Hello World! This is an error message!"
+}
+
+#####################################################################
+# Wrapper function to easily print a warning to STDOUT.
+# Arguments:
+#   The message to echo to STDOUT.
+# Outputs:
+#   An ANSI colour code formatted message to print to STDOUT based on
+#   the message which is passed to the function as a parameter.
+#####################################################################
+function warn() {
+	# TODO: Echo a warning message to STDOUT
+	echo "Hello World! This is a warning message."
+}
+
+#####################################################################
+# Wrapper function to easily print a success to STDOUT.
+# Arguments:
+#   The message to echo to STDOUT.
+# Outputs:
+#   An ANSI colour code formatted message to print to STDOUT based on
+#   the message which is passed to the function as a parameter.
+#####################################################################
+function success() {
+	# TODO: Echo a success message to STDOUT.
+	echo "Hello World! This is a success message."
+}
+
+#####################################################################
+# Entrypoint of the script to invoke with all the arbitrary
+# parameters the script can be invoked with.
+# Arguments:
+#   None
+# Outputs:
+#   None
+#####################################################################
 function main() {
 	# TODO: Create an entrypoint function
 	echo "Hello World!"
