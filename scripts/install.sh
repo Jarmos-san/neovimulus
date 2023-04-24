@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+#
+# Script to install Neovimulus on a user's local machine automatically.
+#
+# Author: Somraj Saha
+# License: MIT License
+# (see https://github.com/Jarmos-san/neovimulus/blob/main/LICENSE for info).
 
 set -euo pipefail
 
@@ -12,12 +18,7 @@ function main() {
 	echo "Hello World!"
 }
 
-# Some definition of ANSI colour codes for usage with the "echo" messages.
-readonly RED="\033[0;31m"
-readonly GREEN="\033[0;32m"
-readonly YELLOW="\033[0;33m"
-readonly NOCOLOR="\033[0m"
-
+# TODO: Move these lines to the "main" function
 echo -e "${YELLOW}[INFO]${NOCOLOR} This script will download & setup Neovimulus for you now..."
 echo -e "${YELLOW}[INFO]${NOCOLOR} Checking if certain prerequisite tools are available..."
 
