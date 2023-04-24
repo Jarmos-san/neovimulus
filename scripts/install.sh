@@ -2,14 +2,21 @@
 
 set -euo pipefail
 
-# Invoke the cleanup function after the script exists with a sucessful invocation
-trap cleanup EXIT
+# Remove all unnecessary artifacts created by the script upon successful execution
+cleanup() {
+	rm --recursive --force "$TEMP_DIR"
+}
+
+function main() {
+	# TODO: Create an entrypoint function
+	echo "Hello World!"
+}
 
 # Some definition of ANSI colour codes for usage with the "echo" messages.
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[0;33m'
-NOCOLOR='\033[0m'
+readonly RED="\033[0;31m"
+readonly GREEN="\033[0;32m"
+readonly YELLOW="\033[0;33m"
+readonly NOCOLOR="\033[0m"
 
 echo -e "${YELLOW}[INFO]${NOCOLOR} This script will download & setup Neovimulus for you now..."
 echo -e "${YELLOW}[INFO]${NOCOLOR} Checking if certain prerequisite tools are available..."
@@ -78,7 +85,8 @@ fi
 echo -e "${GREEN}[SUCCESS]${NOCOLOR} Neovimulus was successfully installed and setup!"
 echo -e "${YELLOW}[INFO]{$NOCOLOR} You can now restart you terminal and invoke the \"nvim\" command to start using Neovimulus..."
 
-# Remove all unnecessary artifacts created by the script upon successful execution
-cleanup() {
-	rm --recursive --force "$TEMP_DIR"
-}
+# Invoke the script with all arbitrary parameters passed to it as flags
+main "$@"
+
+# Invoke the cleanup function after the script exists with a sucessful invocation
+trap cleanup EXIT
