@@ -8,7 +8,16 @@
 
 set -euo pipefail
 
-# Remove all unnecessary artifacts created by the script upon successful execution
+# Some definition of ANSI colour codes for usage with the "echo" messages.
+readonly RED="\033[0;31m"
+readonly GREEN="\033[0;32m"
+readonly YELLOW="\033[0;33m"
+readonly NOCOLOR="\033[0m"
+
+#####################################################################
+# Remove all unnecessary artifacts created by the script upon
+# successful execution.
+#####################################################################
 cleanup() {
 	rm --recursive --force "$TEMP_DIR"
 }
