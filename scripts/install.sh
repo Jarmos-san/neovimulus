@@ -15,7 +15,7 @@ echo -e "${YELLOW}[INFO]${NOCOLOR} This script will download & setup Neovimulus 
 echo -e "${YELLOW}[INFO]${NOCOLOR} Checking if certain prerequisite tools are available..."
 
 # List of the prerequisite tools needed for proper functioninig of the framework
-readonly programs=("git" "nvim" "gcc" "curl")
+readonly programs=("git" "nvim" "gcc" "curl" "tar")
 
 # Loop through the list of "programs" array to check if there are any missing prerequisite tools
 for program in "${programs[@]}"; do
@@ -25,6 +25,16 @@ for program in "${programs[@]}"; do
 		exit 1
 	fi
 done
+
+# Fetch the latest Neovim version which is installed locally
+NVIM_VERSION=$(nvim --version | awk "/NVIM/ {print $2}")
+
+# Check if the installed Neovim is v0.9.0 or not, exit if otherwise.
+if ! test "$NVIM_VERSION" = 0.9.0; then
+	echo -e "${RED}[WARN]${NOCOLOR} An older Neovim v$NVIM_VERSION found..."
+	echo -e "${YELLOW}[INFO] Exiting...Please install the latest Neovim v0.9."
+	exit 1
+fi
 
 echo -e "${GREEN}[SUCCESS]${NOCOLOR} All prerequisite tools are available...proceeding with setting up Neovimulus!"
 
@@ -51,18 +61,18 @@ NEOVIMULUS_CONFIG_DIR="$HOME/.config/neovimulus"
 
 # Create the aforementioned config directory if it doesn't already exists.
 if ! test -d "$NEOVIMULUS_CONFIG_DIR"; then
-  mkdir --parents "$NEOVIMULUS_CONFIG_DIR"
+	mkdir --parents "$NEOVIMULUS_CONFIG_DIR"
 fi
 
 echo -e "${YELLOW}[INFO]${NOCOLOR} Download complete...extracting the configuration files to $NEOVIMULUS_CONFIG_DIR..."
 
 # Extract the contents of the tarball to the Neovim configuration location
-tar --extract --file="$TARBALL" --directory="$NEOVIMULUS_CONFIG_DIR" "init.lua" "ftplugin" "lua"
+tar --extract --file="$TARBALL" --directory="$NEOVIMULUS_CONFIG_DIR" "neovimulus"
 
 # Check if the ".bashrc" or ".bash_profile" files exists, if not then create either of them and append the "NVIM_APPNAME"
 # environment variable which Neovim will natively use to switch to the Neovimulus configuration framework.
 if ! test -f "$HOME/.bashrc" || "$HOME/.bash_profile"; then
-  touch "$HOME/.bashrc" && echo "NVIM_APPNAME=$NEOVIMULUS_CONFIG_DIR" >> "$HOME/.bashrc"
+	touch "$HOME/.bashrc" && echo "NVIM_APPNAME=$NEOVIMULUS_CONFIG_DIR" >>"$HOME/.bashrc"
 fi
 
 echo -e "${GREEN}[SUCCESS]${NOCOLOR} Neovimulus was successfully installed and setup!"
