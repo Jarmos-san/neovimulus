@@ -150,7 +150,6 @@ function download_tarball() {
   local url
   local latest_tag
   local tarball_url
-  local temp_dir
   local tarball
 
   # Get the latest release tag name
@@ -204,8 +203,8 @@ function setup_neovimulus() {
   # which Neovim will natively use to switch to the Neovimulus configuration
   # framework.
   if ! [[ -f "$HOME/.bashrc" ]] || ! [[ -f "$HOME/.bash_profile" ]]; then
-    touch "$HOME/.bashrc"
-    echo "NVIM_APPNAME=$neovimulus_config_dir" >>"$HOME/.bashrc"
+    touch "$HOME/.bashrc" \
+      && echo "NVIM_APPNAME=$neovimulus_config_dir" >>"$HOME/.bashrc"
   fi
 }
 
