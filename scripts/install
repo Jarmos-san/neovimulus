@@ -112,10 +112,26 @@ function prerequisites_exists() {
 		info "Refer to the documentations and install the said tools before trying again"
 		return 1
 	fi
-done
+}
 
-# Fetch the latest Neovim version which is installed locally
-NVIM_VERSION=$(nvim --version | awk "/NVIM/ {print $2}")
+#####################################################################
+# Check if the latest Neovim binary is installed or not, if not then
+# exit execution with a non-zero number.
+# Outputs:
+#   Exit Code of 0 (on successful check)
+#   Exit Code of 1 (on unsuccessful check)
+#####################################################################
+function is_neovim_latest() {
+	# Fetch the latest Neovim version which is installed locally
+	local nvim_version
+	nvim_version=$(nvim --version | awk '/NVIM/ {print $2}')
+
+	# Check if the installed Neovim is v0.9.0 or not, exit if otherwise.
+	if ! [[ "$nvim_version" = "0.9.0" ]]; then
+		error "$nvim_version is older than v0.9.x...please install the latest version!"
+		return 1
+	fi
+}
 
 # Check if the installed Neovim is v0.9.0 or not, exit if otherwise.
 if ! test "$NVIM_VERSION" = 0.9.0; then
