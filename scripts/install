@@ -172,19 +172,38 @@ function download_tarball() {
 	fi
 }
 
-# Name of the downloaded tarball
-TARBALL="$TEMP_DIR/neovimulus.tar.gz"
+#####################################################################
+# Extract the contents of the downloaded tarball & setup Neovimulus
+# on the user's local machine.
+# Arguments:
+#   None
+# Outputs:
+#   None
+#####################################################################
+function setup_neovimulus() {
+	# Initialising some local variables to be used for setting up Neovimulus.
+	local neovimulus_config_dir
+	local tarball
 
-# Download the tarball from the repository.
-curl --fail --silent --show-error --location --output "$TARBALL" "$TARBALL_URL"
+	# Neovimulus configuration directory
+	neovimulus_config_dir="$HOME/.config/neovimulus"
 
-# Neovimulus configuration directory
-NEOVIMULUS_CONFIG_DIR="$HOME/.config/neovimulus"
+	# Create the aforementioned config directory if it doesn't already exists.
+	if ! [[ -d "$neovimulus_config_dir" ]]; then
+		mkdir --parents "$neovimulus_config_dir"
+	fi
 
-# Create the aforementioned config directory if it doesn't already exists.
-if ! test -d "$NEOVIMULUS_CONFIG_DIR"; then
-	mkdir --parents "$NEOVIMULUS_CONFIG_DIR"
-fi
+	# Extract the contents of the tarball to the Neovim configuration location
+	tar --extract --file="$tarball" --directory="$neovimulus_config_dir" "neovimulus"
+
+	# Check if the ".bashrc" or ".bash_profile" files exists, if not then
+	# create either of them and append the "NVIM_APPNAME" environment variable
+	# which Neovim will natively use to switch to the Neovimulus configuration
+	# framework.
+	if ! test -f "$HOME/.bashrc" || "$HOME/.bash_profile"; then
+		touch "$HOME/.bashrc" && echo "NVIM_APPNAME=$neovimulus_config_dir" >>"$HOME/.bashrc"
+	fi
+}
 
 echo -e "${YELLOW}[INFO]${NOCOLOR} Download complete...extracting the configuration files to $NEOVIMULUS_CONFIG_DIR..."
 
