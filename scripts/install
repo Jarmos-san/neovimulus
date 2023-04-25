@@ -42,8 +42,7 @@ cleanup() {
 #   the message which is passed to the function as a parameter.
 #####################################################################
 function error() {
-	# TODO: Echo an error message to STDERR
-	echo "Hello World! This is an error message!"
+	echo -e "${RED}[ERROR]${NOCOLOR} $1"
 }
 
 #####################################################################
@@ -55,8 +54,7 @@ function error() {
 #   the message which is passed to the function as a parameter.
 #####################################################################
 function warn() {
-	# TODO: Echo a warning message to STDOUT
-	echo "Hello World! This is a warning message."
+	echo -e "${YELLOW}[WARN]${NOCOLOR} $1"
 }
 
 #####################################################################
@@ -68,8 +66,7 @@ function warn() {
 #   the message which is passed to the function as a parameter.
 #####################################################################
 function success() {
-	# TODO: Echo a success message to STDOUT.
-	echo "Hello World! This is a success message."
+	echo -e "${GREEN}[SUCCESS]${NOCOLOR} $1"
 }
 
 #####################################################################
