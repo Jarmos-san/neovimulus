@@ -23,17 +23,17 @@ TEMP_DIR=$(mktemp --directory)
 # successful execution.
 #####################################################################
 cleanup() {
-	# Remove the temporary directory which was created to download and
-	# extract the tarball from the remote repository
-	rm --recursive --force "$TEMP_DIR"
+  # Remove the temporary directory which was created to download and
+  # extract the tarball from the remote repository
+  rm --recursive --force "$TEMP_DIR"
 
-	# Remove the colour codes which was used to format the
-	# STDERR/STDOUT messages.
-	unset RED
-	unset GREEN
-	unset YELLOW
-	unset BLUE
-	unset NOCOLOR
+  # Remove the colour codes which was used to format the
+  # STDERR/STDOUT messages.
+  unset RED
+  unset GREEN
+  unset YELLOW
+  unset BLUE
+  unset NOCOLOR
 }
 
 #####################################################################
@@ -45,7 +45,7 @@ cleanup() {
 #   the message which is passed to the function as a parameter.
 #####################################################################
 function error() {
-	echo -e "${RED}[ERROR]${NOCOLOR} $1"
+  echo -e "${RED}[ERROR]${NOCOLOR} $1"
 }
 
 #####################################################################
@@ -57,7 +57,7 @@ function error() {
 #   the message which is passed to the function as a parameter.
 #####################################################################
 function warn() {
-	echo -e "${YELLOW}[WARN]${NOCOLOR} $1"
+  echo -e "${YELLOW}[WARN]${NOCOLOR} $1"
 }
 
 #####################################################################
@@ -69,7 +69,7 @@ function warn() {
 #   the message which is passed to the function as a parameter.
 #####################################################################
 function success() {
-	echo -e "${GREEN}[SUCCESS]${NOCOLOR} $1"
+  echo -e "${GREEN}[SUCCESS]${NOCOLOR} $1"
 }
 
 #####################################################################
@@ -81,7 +81,7 @@ function success() {
 #   the message which is passed to the function as a parameter.
 #####################################################################
 function info() {
-	echo -e "${BLUE}[INFO]${NOCOLOR} $1"
+  echo -e "${BLUE}[INFO]${NOCOLOR} $1"
 }
 
 #####################################################################
@@ -95,26 +95,26 @@ function info() {
 #   Exit Code 1 (on unsuccessful checks)
 #####################################################################
 function prerequisites_exists() {
-	info "Checking if certain prerequisite tools are available..."
+  info "Checking if certain prerequisite tools are available..."
 
-	# List of the prerequisite tools needed for proper functioninig of the framework
-	declare -a programs=("git" "nvim" "gcc" "curl" "tar")
+  # List of the prerequisite tools needed for proper functioninig of the framework
+  declare -a programs=("git" "nvim" "gcc" "curl" "tar")
 
-	# List of missing prerequisite tools
-	declare -a missing_tools=()
+  # List of missing prerequisite tools
+  declare -a missing_tools=()
 
-	# Loop through the list of "programs" array to check if there are any missing prerequisite tools
-	for program in "${programs[@]}"; do
-		if ! [[ -x "$(command -v "${program}")" ]]; then
-			missing_tools+=("$program")
-		fi
-	done
+  # Loop through the list of "programs" array to check if there are any missing prerequisite tools
+  for program in "${programs[@]}"; do
+    if ! [[ -x "$(command -v "${program}")" ]]; then
+      missing_tools+=("$program")
+    fi
+  done
 
-	if ((${#missing_tools[@]} != 0)); then
-		error "Some prerequisite tools were not found or not installed...exiting!"
-		info "Refer to the documentations and install the said tools before trying again"
-		return 1
-	fi
+  if ((${#missing_tools[@]} != 0)); then
+    error "Some prerequisite tools were not found or not installed...exiting!"
+    info "Refer to the documentations and install the said tools before trying again"
+    return 1
+  fi
 }
 
 #####################################################################
@@ -125,15 +125,15 @@ function prerequisites_exists() {
 #   Exit Code of 1 (on unsuccessful check)
 #####################################################################
 function is_neovim_latest() {
-	# Fetch the latest Neovim version which is installed locally
-	local nvim_version
-	nvim_version=$(nvim --version | awk '/NVIM/ {print $2}')
+  # Fetch the latest Neovim version which is installed locally
+  local nvim_version
+  nvim_version=$(nvim --version | awk '/NVIM/ {print $2}')
 
-	# Check if the installed Neovim is v0.9.0 or not, exit if otherwise.
-	if ! [[ "$nvim_version" = "0.9.0" ]]; then
-		error "$nvim_version is older than v0.9.x...please install the latest version!"
-		return 1
-	fi
+  # Check if the installed Neovim is v0.9.0 or not, exit if otherwise.
+  if ! [[ "$nvim_version" = "0.9.0" ]]; then
+    error "$nvim_version is older than v0.9.x...please install the latest version!"
+    return 1
+  fi
 }
 
 #####################################################################
@@ -146,33 +146,30 @@ function is_neovim_latest() {
 #   Exit code of 1 (on unsuccessful check)
 #####################################################################
 function download_tarball() {
-	# Initialise the variables according to the scope of the function.
-	local url
-	local latest_tag
-	local tarball_url
-	local temp_dir
-	local tarball
+  # Initialise the variables according to the scope of the function.
+  local url
+  local latest_tag
+  local tarball_url
+  local temp_dir
+  local tarball
 
-	# Get the latest release tag name
-	url="https://api.github.com/repos/Jarmos-san/neovimulus/releases/latest"
-	latest_tag=$(curl --fail --silent --show-error --location "$url" |
-		grep --only-matching --perl-regexp '"tag_name": "\K(.*)(?=")')
+  # Get the latest release tag name
+  url="https://api.github.com/repos/Jarmos-san/neovimulus/releases/latest"
+  latest_tag=$(curl --fail --silent --show-error --location "$url" \
+    | grep --only-matching --perl-regexp '"tag_name": "\K(.*)(?=")')
 
-	# Construct the URL of the tarball
-	tarball_url="https://github.com/Jarmos-san/neovimulus/archive/${latest_tag}.tar.gz"
+  # Construct the URL of the tarball
+  tarball_url="https://github.com/Jarmos-san/neovimulus/archive/${latest_tag}.tar.gz"
 
-	# Temporary location to store the tarball at (it'll be cleaned up later on)
-	temp_dir=$(mktemp --directory)
+  # Name of the downloaded tarball
+  tarball="$TEMP_DIR/neovimulus.tar.gz"
 
-	# Name of the downloaded tarball
-	tarball="$temp_dir/neovimulus.tar.gz"
+  # Download the tarball from the repository.
+  curl --fail --silent --show-error --location --output "$tarball" "$tarball_url"
 
-	# Download the tarball from the repository.
-	curl --fail --silent --show-error --location --output "$tarball" "$tarball_url"
-
-	if [[ -f "$tarball" ]]; then
-		return 0
-	fi
+  if [[ -f "$tarball" ]]; then
+    return 0
+  fi
 }
 
 #####################################################################
@@ -184,28 +181,31 @@ function download_tarball() {
 #   None
 #####################################################################
 function setup_neovimulus() {
-	# Initialising some local variables to be used for setting up Neovimulus.
-	local neovimulus_config_dir
-	local tarball
+  # Initialising some local variables to be used for setting up Neovimulus.
+  local neovimulus_config_dir
+  local tarball
 
-	# Neovimulus configuration directory
-	neovimulus_config_dir="$HOME/.config/neovimulus"
+  # Neovimulus configuration directory
+  neovimulus_config_dir="$HOME/.config/neovimulus"
 
-	# Create the aforementioned config directory if it doesn't already exists.
-	if ! [[ -d "$neovimulus_config_dir" ]]; then
-		mkdir --parents "$neovimulus_config_dir"
-	fi
+  # Create the aforementioned config directory if it doesn't already exists.
+  if ! [[ -d "$neovimulus_config_dir" ]]; then
+    mkdir --parents "$neovimulus_config_dir"
+  fi
 
-	# Extract the contents of the tarball to the Neovim configuration location
-	tar --extract --file="$tarball" --directory="$neovimulus_config_dir" "neovimulus"
+  # The tarball to extract the configuration contents from
+  tarball="$TEMP_DIR/neovimulus.tar.gz"
 
-	# Check if the ".bashrc" or ".bash_profile" files exists, if not then
-	# create either of them and append the "NVIM_APPNAME" environment variable
-	# which Neovim will natively use to switch to the Neovimulus configuration
-	# framework.
-	if ! test -f "$HOME/.bashrc" || "$HOME/.bash_profile"; then
-		touch "$HOME/.bashrc" && echo "NVIM_APPNAME=$neovimulus_config_dir" >>"$HOME/.bashrc"
-	fi
+  # Extract the contents of the tarball to the Neovim configuration location
+  tar --extract --file="$tarball" --directory="$neovimulus_config_dir" "neovimulus"
+
+  # Check if the ".bashrc" or ".bash_profile" files exists, if not then
+  # create either of them and append the "NVIM_APPNAME" environment variable
+  # which Neovim will natively use to switch to the Neovimulus configuration
+  # framework.
+  if ! test -f "$HOME/.bashrc" || "$HOME/.bash_profile"; then
+    touch "$HOME/.bashrc" && echo "NVIM_APPNAME=$neovimulus_config_dir" >>"$HOME/.bashrc"
+  fi
 }
 
 #####################################################################
@@ -217,24 +217,24 @@ function setup_neovimulus() {
 #   None
 #####################################################################
 function main() {
-	info "This script will download & setup Neovimulus for you now..."
+  info "This script will download & setup Neovimulus for you now..."
 
-	if prerequisites_exists && is_neovim_latest; then
-		success "All prerequisite tools are available...proceeding with setting up Neovimulus!"
-	else
-		exit 1
-	fi
+  if prerequisites_exists && is_neovim_latest; then
+    success "All prerequisite tools are available...proceeding with setting up Neovimulus!"
+  else
+    exit 1
+  fi
 
-	info "Downloading tarball from the remote GitHub repository..."
+  info "Downloading tarball from the remote GitHub repository..."
 
-	if download_tarball; then
-		info "Download complete...setting up Neovimulus"
-		setup_neovimulus
-		success "Neovimulus was successfully installed and setup!"
-		info "You can now restart you terminal and invoke the \"nvim\" command to start using Neovimulus..."
-	else
-		error "Downloading tarball failed...please check your Internet & retry execution."
-	fi
+  if download_tarball; then
+    info "Download complete...setting up Neovimulus"
+    setup_neovimulus
+    success "Neovimulus was successfully installed and setup!"
+    info "You can now restart you terminal and invoke the \"nvim\" command to start using Neovimulus..."
+  else
+    error "Downloading tarball failed...please check your Internet & retry execution."
+  fi
 }
 
 # Invoke the script with all arbitrary parameters passed to it as flags
