@@ -133,23 +133,39 @@ function is_neovim_latest() {
 	fi
 }
 
-# Check if the installed Neovim is v0.9.0 or not, exit if otherwise.
-if ! test "$NVIM_VERSION" = 0.9.0; then
-	echo -e "${RED}[WARN]${NOCOLOR} An older Neovim v$NVIM_VERSION found..."
-	echo -e "${YELLOW}[INFO] Exiting...Please install the latest Neovim v0.9."
-	exit 1
-fi
+#####################################################################
+# Download the tarball of the remote repository from GitHub for final
+# extraction & setup.
+# Arguments:
+#   None
+# Outputs:
+#   Exit code of 0 (on successful check)
+#   Exit code of 1 (on unsuccessful check)
+#####################################################################
+function download_tarball() {
+	# Initialise the variables according to the scope of the function.
+	local url
+	local latest_tag
+	local tarball_url
+	local temp_dir
+	local tarball
 
-echo -e "${GREEN}[SUCCESS]${NOCOLOR} All prerequisite tools are available...proceeding with setting up Neovimulus!"
+	# Get the latest release tag name
+	url="https://api.github.com/repos/Jarmos-san/neovimulus/releases/latest"
+	latest_tag=$(curl --fail --silent --show-error --location "$url" |
+		grep --only-matching --perl-regexp '"tag_name": "\K(.*)(?=")')
 
-echo -e "${YELLOW}[INFO]${NOCOLOR}: Downloading tarball from the remote GitHub repository..."
+	# Construct the URL of the tarball
+	tarball_url="https://github.com/Jarmos-san/neovimulus/archive/${latest_tag}.tar.gz"
 
-# Get the latest release tag name
-LATEST_TAG=$(curl --fail --silent --show-error --location "https://api.github.com/repos/Jarmos-san/neovimulus/releases/latest" |
-	grep --only-matching --perl-regexp '"tag_name": "\K(.*)(?=")')
+	# Temporary location to store the tarball at (it'll be cleaned up later on)
+	temp_dir=$(mktemp --directory)
 
-# Construct the URL of the tarball
-TARBALL_URL="https://github.com/Jarmos-san/neovimulus/archive/${LATEST_TAG}.tar.gz"
+	# Name of the downloaded tarball
+	tarball="$temp_dir/neovimulus.tar.gz"
+
+	# Download the tarball from the repository.
+	curl --fail --silent --show-error --location --output "$tarball" "$tarball_url"
 
 # Temporary location to store the tarball at (it'll be cleaned up later on)
 TEMP_DIR=$(mktemp --directory)
