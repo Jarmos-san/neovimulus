@@ -203,8 +203,9 @@ function setup_neovimulus() {
   # create either of them and append the "NVIM_APPNAME" environment variable
   # which Neovim will natively use to switch to the Neovimulus configuration
   # framework.
-  if ! test -f "$HOME/.bashrc" || "$HOME/.bash_profile"; then
-    touch "$HOME/.bashrc" && echo "NVIM_APPNAME=$neovimulus_config_dir" >>"$HOME/.bashrc"
+  if ! [[ -f "$HOME/.bashrc" ]] || ! [[ -f "$HOME/.bash_profile" ]]; then
+    touch "$HOME/.bashrc"
+    echo "NVIM_APPNAME=$neovimulus_config_dir" >>"$HOME/.bashrc"
   fi
 }
 
