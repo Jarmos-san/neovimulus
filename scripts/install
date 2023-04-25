@@ -167,8 +167,10 @@ function download_tarball() {
 	# Download the tarball from the repository.
 	curl --fail --silent --show-error --location --output "$tarball" "$tarball_url"
 
-# Temporary location to store the tarball at (it'll be cleaned up later on)
-TEMP_DIR=$(mktemp --directory)
+	if [[ -f "$tarball" ]]; then
+		return 0
+	fi
+}
 
 # Name of the downloaded tarball
 TARBALL="$TEMP_DIR/neovimulus.tar.gz"
