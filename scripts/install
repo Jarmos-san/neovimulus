@@ -77,9 +77,8 @@ function success() {
 #   An ANSI colour code formatted message to print to STDOUT based on
 #   the message which is passed to the function as a parameter.
 #####################################################################
-function main() {
-	# TODO: Create an entrypoint function
-	echo "Hello World!"
+function info() {
+	echo -e "${BLUE}[INFO]${NOCOLOR} $1"
 }
 
 # TODO: Move these lines to the "main" function
