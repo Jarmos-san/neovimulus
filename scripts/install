@@ -20,7 +20,17 @@ NOCOLOR="\033[0m"
 # successful execution.
 #####################################################################
 cleanup() {
+	# Remove the temporary directory which was created to download and
+	# extract the tarball from the remote repository
 	rm --recursive --force "$TEMP_DIR"
+
+	# Remove the colour codes which was used to format the
+	# STDERR/STDOUT messages.
+	unset RED
+	unset GREEN
+	unset YELLOW
+	unset BLUE
+	unset NOCOLOR
 }
 
 #####################################################################
