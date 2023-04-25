@@ -81,19 +81,36 @@ function info() {
 	echo -e "${BLUE}[INFO]${NOCOLOR} $1"
 }
 
-# TODO: Move these lines to the "main" function
-echo -e "${YELLOW}[INFO]${NOCOLOR} This script will download & setup Neovimulus for you now..."
-echo -e "${YELLOW}[INFO]${NOCOLOR} Checking if certain prerequisite tools are available..."
+#####################################################################
+# Check if certain prerequisite tools are installed locally or not,
+# if not then exit the execution of the script.
+# Arguments:
+#   An array of tools to check for if they're installed & available
+#   or not.
+# Outputs:
+#   Exit Code 0 (on successful checks)
+#   Exit Code 1 (on unsuccessful checks)
+#####################################################################
+function prerequisites_exists() {
+	info "Checking if certain prerequisite tools are available..."
 
-# List of the prerequisite tools needed for proper functioninig of the framework
-readonly programs=("git" "nvim" "gcc" "curl" "tar")
+	# List of the prerequisite tools needed for proper functioninig of the framework
+	declare -a programs=("git" "nvim" "gcc" "curl" "tar")
 
-# Loop through the list of "programs" array to check if there are any missing prerequisite tools
-for program in "${programs[@]}"; do
-	if ! command -v "$program" &>/dev/null; then
-		echo -e "${RED}[ERROR]${NOCOLOR}: \"${YELLOW}$program${NOCOLOR}\" is not installed or cannot be invoked!"
-		echo -e "${YELLOW}[INFO]${NOCOLOR} Exiting....Refer to the usage guidelines to know what the prerequisite tools are."
-		exit 1
+	# List of missing prerequisite tools
+	declare -a missing_tools=()
+
+	# Loop through the list of "programs" array to check if there are any missing prerequisite tools
+	for program in "${programs[@]}"; do
+		if ! [[ -x "$(command -v "${program}")" ]]; then
+			missing_tools+=("$program")
+		fi
+	done
+
+	if ((${#missing_tools[@]} != 0)); then
+		error "Some prerequisite tools were not found or not installed...exiting!"
+		info "Refer to the documentations and install the said tools before trying again"
+		return 1
 	fi
 done
 
