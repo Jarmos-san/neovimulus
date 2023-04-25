@@ -70,12 +70,12 @@ function success() {
 }
 
 #####################################################################
-# Entrypoint of the script to invoke with all the arbitrary
-# parameters the script can be invoked with.
+# Wrapper function to easily print a success to STDOUT.
 # Arguments:
-#   None
+#   The message to echo to STDOUT.
 # Outputs:
-#   None
+#   An ANSI colour code formatted message to print to STDOUT based on
+#   the message which is passed to the function as a parameter.
 #####################################################################
 function main() {
 	# TODO: Create an entrypoint function
