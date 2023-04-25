@@ -205,19 +205,34 @@ function setup_neovimulus() {
 	fi
 }
 
-echo -e "${YELLOW}[INFO]${NOCOLOR} Download complete...extracting the configuration files to $NEOVIMULUS_CONFIG_DIR..."
+#####################################################################
+# Entrypoint of the script to invoke with all the arbitrary
+# parameters the script can be invoked with.
+# Arguments:
+#   None
+# Outputs:
+#   None
+#####################################################################
+function main() {
+	info "This script will download & setup Neovimulus for you now..."
 
-# Extract the contents of the tarball to the Neovim configuration location
-tar --extract --file="$TARBALL" --directory="$NEOVIMULUS_CONFIG_DIR" "neovimulus"
+	if prerequisites_exists && is_neovim_latest; then
+		success "All prerequisite tools are available...proceeding with setting up Neovimulus!"
+	else
+		exit 1
+	fi
 
-# Check if the ".bashrc" or ".bash_profile" files exists, if not then create either of them and append the "NVIM_APPNAME"
-# environment variable which Neovim will natively use to switch to the Neovimulus configuration framework.
-if ! test -f "$HOME/.bashrc" || "$HOME/.bash_profile"; then
-	touch "$HOME/.bashrc" && echo "NVIM_APPNAME=$NEOVIMULUS_CONFIG_DIR" >>"$HOME/.bashrc"
-fi
+	info "Downloading tarball from the remote GitHub repository..."
 
-echo -e "${GREEN}[SUCCESS]${NOCOLOR} Neovimulus was successfully installed and setup!"
-echo -e "${YELLOW}[INFO]{$NOCOLOR} You can now restart you terminal and invoke the \"nvim\" command to start using Neovimulus..."
+	if download_tarball; then
+		info "Download complete...setting up Neovimulus"
+		setup_neovimulus
+		success "Neovimulus was successfully installed and setup!"
+		info "You can now restart you terminal and invoke the \"nvim\" command to start using Neovimulus..."
+	else
+		error "Downloading tarball failed...please check your Internet & retry execution."
+	fi
+}
 
 # Invoke the script with all arbitrary parameters passed to it as flags
 main "$@"
