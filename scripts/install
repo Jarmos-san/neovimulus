@@ -8,11 +8,12 @@
 
 set -euo pipefail
 
-# Some definition of ANSI colour codes for usage with the "echo" messages.
-readonly RED="\033[0;31m"
-readonly GREEN="\033[0;32m"
-readonly YELLOW="\033[0;33m"
-readonly NOCOLOR="\033[0m"
+# Some colour codes to make the formatted output prettier.
+RED="\033[0;31m"
+GREEN="\033[0;32m"
+YELLOW="\033[0;33m"
+BLUE="\033[0;34m"
+NOCOLOR="\033[0m"
 
 #####################################################################
 # Remove all unnecessary artifacts created by the script upon
