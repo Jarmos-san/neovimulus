@@ -34,6 +34,7 @@ cleanup() {
   unset YELLOW
   unset BLUE
   unset NOCOLOR
+  unset TEMP_DIR
 }
 
 #####################################################################
@@ -94,7 +95,7 @@ function info() {
 #   Exit Code 0 (on successful checks)
 #   Exit Code 1 (on unsuccessful checks)
 #####################################################################
-function prerequisites_exists() {
+function has_prerequisite_tools() {
   info "Checking if certain prerequisite tools are available..."
 
   # List of the prerequisite tools needed for proper functioninig of the framework
@@ -219,7 +220,7 @@ function setup_neovimulus() {
 function main() {
   info "This script will download & setup Neovimulus for you now..."
 
-  if prerequisites_exists && is_neovim_latest; then
+  if has_prerequisite_tools && is_neovim_latest; then
     success "All prerequisite tools are available...proceeding with setting up Neovimulus!"
   else
     exit 1
