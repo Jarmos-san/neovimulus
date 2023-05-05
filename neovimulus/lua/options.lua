@@ -10,15 +10,12 @@ opt.completeopt = "menu,menuone,noselect" -- Make the autocompletion window more
 opt.conceallevel = 3 -- Hide the * markups for bold & italics
 opt.confirm = true -- Prompt to save the contents of the buffer before exiting
 opt.expandtab = true -- Use spaces instead of tabs
--- TODO: Figure out what purpose does it serve
--- opt.formatoptions = "jcroqlnt" -- Some formatting configuration, needs more research
 opt.ignorecase = true -- Ignore casing when searching for a word
 opt.inccommand = "nosplit" -- Preview incremental substitute
 opt.list = true -- Show invisible whitespace characters
 opt.pumblend = 10 -- Make the completion popup window a bit transparent
 opt.pumheight = 10 -- Display only 10 rows for the completion menu
 opt.shiftround = true -- Roundup indentations
--- TODO: Figure a way out to configure these options specific to the filetype instead
 opt.shiftwidth = 2 -- The default size of an indentation (this will be configure per filetype later on)
 opt.tabstop = 2 -- Number of Spaces, a single tab counts for
 opt.showmode = false -- Disable showing the current mode since its already visible on the statusline
@@ -34,5 +31,6 @@ opt.undolevels = 10000 -- ??
 opt.updatetime = 200 -- Save swap file & trigger CursorHold
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Maximum window width
-
-vim.notify = require("notify")
+opt.iskeyword:append("-") -- Make Neovim recognise dash-seperated words as a single word
+opt.wrap = false -- Configure Neovim to not wrap the contents of the buffer
+opt.cursorline = true -- Configure Neovim to highlight the current location of the cursor
