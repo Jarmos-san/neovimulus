@@ -68,8 +68,6 @@ the following set of prerequisite tools installed and running:
 With the prerequisite tools installed and verified, run the following command:
 
 ```console
-# NOTE: This command will fetch the contents of the installation script before
-# invoking it automatically!
 curl -fsSL https://tinyurl.com/install-neovimulus | bash
 ```
 
