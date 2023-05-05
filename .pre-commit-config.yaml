@@ -12,10 +12,9 @@ repos:
     hooks:
       - id: stylua
 
-  - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 3.0.0
-    hooks:
-      - id: script-must-not-have-extension
-      - id: shellcheck
-      - id: shfmt
-        args: ["-i", "2", "-ci", "-bn"]
+  # FIXME: Figure a way out to install the binaries flawlessly
+  # - repo: https://github.com/scop/pre-commit-shfmt
+  #   rev: v3.6.0-2
+  #   hooks:
+  #     - id: shfmt
+  #       args: ["-i", "2", "-ci", "-bn"]
