@@ -51,8 +51,8 @@ require("lazy").setup("plugins", {
 })
 
 -- Load the necessary user-defined Lua modules here for customising Neovim.
-require("configs.options")
-require("configs.autocmds")
-require("configs.keymaps")
+require("options")
+require("autocmds")
+require("keymaps")
 
 vim.cmd([[ colorscheme onedark ]])
