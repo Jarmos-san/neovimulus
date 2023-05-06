@@ -11,14 +11,14 @@ The following features & upgrade notes has been implemented in to the project or
 has not made itself into the public release yet. If you want to track the
 unreleased features, check out the `main` branch.
 
-### Added
+## 2.0.0 - 2023-05-07
 
 The following changes will be added to the v2.0.0 release in the future:
 
 - Removed Docker support since with the latest release version i.e Neovim v0.9
   has provided support for easier configuration loading through the
   `NVIM_APPNAME` environment variable. See
-  [ `:h NVIM_APPNAME` ](https://neovim.io/doc/user/starting.html#%24NVIM_APPNAME)
+  [`:h NVIM_APPNAME`](https://neovim.io/doc/user/starting.html#%24NVIM_APPNAME)
   for more information on this regards.
 - Removed the redundant `Taskfile.yml` which was earlier used during development
   for managing the various `docker` images & containers.
@@ -26,14 +26,6 @@ The following changes will be added to the v2.0.0 release in the future:
   user's local machine.
 - Renamed the project to be more apt since it no longer depends on Docker for
   usage!
-
-More changes to the configuration will be listed & documented here as necessary.
-
-### Changes to Add Later (or TODO Tasks)
-
-Following are some changes/updates which will added to the project at some point
-in time.
-
 - Restructure the configuration files & the directories to follow a more simple
   pattern. This should also reduce clutter and unnecessary complexity.
 
