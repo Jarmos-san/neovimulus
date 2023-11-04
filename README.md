@@ -1,5 +1,9 @@
 # 🍱 A Minimal & Hackable Neovim Configuration Framework!
 
+**NOTE**: I am no longer working on this project, check out my
+[dotfiles](https://github.com/Jarmos-san/dotfiles/tree/main/dotfiles/.config/nvim)
+instead to check how I use a minimal dev environment using Neovim.
+
 I have been using Neovim for years now and the custom Neovim environment I use
 for writing code was developed over all the years I have been using the tool.
 Some coworkers/friends noticed my work environment and would often ask me to
